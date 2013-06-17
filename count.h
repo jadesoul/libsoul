@@ -12,8 +12,6 @@
  * Written In: Peking University, beijing, China
  */
 
-#include "includes.h"
-
 /**
  *  count
  *	

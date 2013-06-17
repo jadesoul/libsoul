@@ -10,9 +10,7 @@
  * Date: 2011-12-28 14:35:47.895000
  * Written In: Peking University, beijing, China
  */
-
-#include "includes.h"
-
+ 
 /**
  *  join -- join all elememts in a Fragments container with a Glue container.
  *  That is join some Fragments with Glue between every two Fragments.
