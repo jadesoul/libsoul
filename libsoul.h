@@ -10,7 +10,9 @@
  * Written In: Peking University, beijing, China
  */
 
+#include "bootstrap.h"
 #include "algorithms.h"
+#include "corelib.h"
 #include "utils.h"
 #include "thread.h"
 #include "optparse.h"

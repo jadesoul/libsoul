@@ -11,9 +11,7 @@
  */
 
 #include "bootstrap.h"
-#include "count.h"
-#include "repeat.h"
-#include "split.h"
+#include "algorithms.h"
 
 #include "str.h"
 #include "set.h"
