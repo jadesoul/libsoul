@@ -14,13 +14,13 @@
 //most bad: O(nlogn)
 //average: O(nlogn)
 
-template <  class Container >
+template<class Container>
 void heap_sort(Container& c) {
 	make_heap(c.begin(), c.end());
 	sort_heap(c.begin(), c.end());
 }
 
-template <  class RandomAccessIterator >
+template<class RandomAccessIterator>
 void heap_sort(RandomAccessIterator begin, RandomAccessIterator end) {
 	RandomAccessIterator i, j;
 	make_heap(begin, end);

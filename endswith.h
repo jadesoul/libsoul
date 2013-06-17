@@ -10,9 +10,6 @@
  * Written In: Peking University, beijing, China
  */
  
-#include "includes.h"
-
-/* endswith { */
 
 /**
  *  endswith
@@ -59,7 +56,5 @@ bool endswith(InputIterator1 first1,
 	}
 	return true;
 }
-
-/* endswith } */
 
 #endif /* ENDSWITH_H_1324966538_22 */

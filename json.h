@@ -10,7 +10,7 @@
  * Written In: Peking University, beijing, China
  */
 
-#include <corelib.h>
+#include "corelib.h"
 
 class num {
 public:

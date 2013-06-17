@@ -10,8 +10,6 @@
  * Written In: Peking University, beijing, China
  */
 
-#include "includes.h"
-
 
 /**
  *  slice -- slice a big container by a range to get a smaller one (will copy a new one)
@@ -20,7 +18,7 @@
  *  return a new container
 */
 
-#include <bootstrap.h>
+#include "bootstrap.h"
 
 template <  class Container >
 Container slice(Container& c, int start, int stop, int step) {

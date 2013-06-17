@@ -10,6 +10,6 @@
  * Written In: Peking University, beijing, China
  */
 
-#include <bootstrap.h>
+#include "bootstrap.h"
 
 #endif /* RANDOM_H_1356527036_22 */

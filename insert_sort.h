@@ -9,8 +9,7 @@
  * Date: 2011-12-27 14:29:10.574000
  * Written In: Peking University, beijing, China
  */
-
-
+ 
 //insert_sort
 // O(n^2)
 
@@ -22,8 +21,6 @@ void insert_sort(RandomAccessIterator begin, RandomAccessIterator end) {
 		if (j!=i) rotate(j, i, i+1);
 	}
 }
-
-
 
 //using binary search when insert
 // O(n log n)

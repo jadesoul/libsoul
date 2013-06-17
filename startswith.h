@@ -10,7 +10,6 @@
  * Written In: Peking University, beijing, China
  */
 
-#include "includes.h"
 
 /**
  *  startswith
@@ -20,8 +19,7 @@
  *	
  *  usage sample: cout<<boolalpha<<startswith(p, p+12, q, q+5);
 */
-template <  class InputIterator1,
-class InputIterator2    >
+template<class InputIterator1, class InputIterator2>
 bool startswith(InputIterator1 first1, InputIterator1 last1,
 			InputIterator2 first2, InputIterator2 last2 ) {
 	ptrdiff_t len1 = distance(first1, last1), len2 = distance(first2, last2);
