@@ -77,6 +77,7 @@ const uint json::item::size() const {
 	if (isarr()) return toarr().size();
 	if (isdict()) return todict().size();
 	assert(false);
+	return 0;
 }
 
 void decode(const str& s) {

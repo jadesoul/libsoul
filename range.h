@@ -11,8 +11,7 @@
  */
 
 #include "bootstrap.h"
-#include "split.h"
-#include "slice.h"
+#include "algorithms.h"
 
 /**
   * range -- Interval types implementation

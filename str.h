@@ -13,11 +13,7 @@
 #include "bootstrap.h"
 #include "range.h"
 
-#include "startswith.h"
-#include "endswith.h"
-#include "join.h"
-#include "split.h"
-#include "count.h"
+#include "algorithms.h"
 
 class str {
 public:
