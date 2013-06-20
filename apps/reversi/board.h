@@ -12,8 +12,5 @@
 
 #include <libsoul>
 
-int main () {
-	cout<<"hello, world"<<endl;
-}
 
 #endif /* BOARD_H_1371483294_09 */

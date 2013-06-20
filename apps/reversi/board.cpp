@@ -1,6 +1,6 @@
 /**
  * File: board.cpp
- * Description: 
+ * Description:		
  *
  * Copyright (c) 2012 Jadesoul (Home Page: http://jadesoul.sinaapp.com)
  * 
@@ -8,9 +8,4 @@
  * Written In: Peking University, beijing, China
  */
 
-#include <libsoul>
-
-int main () {
-	cout<<"hello, world"<<endl;
-}
 
