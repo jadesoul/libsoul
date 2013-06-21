@@ -70,7 +70,69 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="..\..\..\CMakeLists.txt" />
+    <None Include="..\..\..\dump_format_generator.py" />
+    <None Include="..\..\..\Makefile" />
+    <None Include="..\..\..\README.txt" />
+    <None Include="..\..\..\tuple_generator.py" />
     <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\algorithms.h" />
+    <ClInclude Include="..\..\..\bootstrap.h" />
+    <ClInclude Include="..\..\..\compiler.h" />
+    <ClInclude Include="..\..\..\corelib.h" />
+    <ClInclude Include="..\..\..\datetime.h" />
+    <ClInclude Include="..\..\..\debug.h" />
+    <ClInclude Include="..\..\..\dict.h" />
+    <ClInclude Include="..\..\..\dict_hash_map.hpp" />
+    <ClInclude Include="..\..\..\dict_new_impl.h" />
+    <ClInclude Include="..\..\..\dict_open_addr.hpp" />
+    <ClInclude Include="..\..\..\dict_rbtree_map.hpp" />
+    <ClInclude Include="..\..\..\dump.h" />
+    <ClInclude Include="..\..\..\dump_format.h" />
+    <ClInclude Include="..\..\..\encoding.h" />
+    <ClInclude Include="..\..\..\enumerator.h" />
+    <ClInclude Include="..\..\..\filesys.h" />
+    <ClInclude Include="..\..\..\json.h" />
+    <ClInclude Include="..\..\..\libsoul.h" />
+    <ClInclude Include="..\..\..\list.h" />
+    <ClInclude Include="..\..\..\list_old.h" />
+    <ClInclude Include="..\..\..\logging.h" />
+    <ClInclude Include="..\..\..\macros.h" />
+    <ClInclude Include="..\..\..\meminfo.h" />
+    <ClInclude Include="..\..\..\network.h" />
+    <ClInclude Include="..\..\..\optparse.h" />
+    <ClInclude Include="..\..\..\os.h" />
+    <ClInclude Include="..\..\..\random.h" />
+    <ClInclude Include="..\..\..\range.h" />
+    <ClInclude Include="..\..\..\regexp.h" />
+    <ClInclude Include="..\..\..\set.h" />
+    <ClInclude Include="..\..\..\str.h" />
+    <ClInclude Include="..\..\..\thread.h" />
+    <ClInclude Include="..\..\..\tuple.h" />
+    <ClInclude Include="..\..\..\types.h" />
+    <ClInclude Include="..\..\..\unicode.h" />
+    <ClInclude Include="..\..\..\utils.h" />
+    <ClInclude Include="..\..\..\wchar.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\datetime.cpp" />
+    <ClCompile Include="..\..\..\dump.cpp" />
+    <ClCompile Include="..\..\..\filesys.cpp" />
+    <ClCompile Include="..\..\..\json.cpp" />
+    <ClCompile Include="..\..\..\logging.cpp" />
+    <ClCompile Include="..\..\..\meminfo.cpp" />
+    <ClCompile Include="..\..\..\network.cpp" />
+    <ClCompile Include="..\..\..\optparse.cpp" />
+    <ClCompile Include="..\..\..\random.cpp" />
+    <ClCompile Include="..\..\..\range.cpp" />
+    <ClCompile Include="..\..\..\regexp.cpp" />
+    <ClCompile Include="..\..\..\str.cpp" />
+    <ClCompile Include="..\..\..\thread.cpp" />
+    <ClCompile Include="..\..\..\types.cpp" />
+    <ClCompile Include="..\..\..\unicode.cpp" />
+    <ClCompile Include="..\..\..\utils.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
