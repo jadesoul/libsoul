@@ -10,11 +10,15 @@
 
 #include "board.h"
 
-int main () {
+void test() {
 	cout<<"hello, world "<<endl;
 	str a="hi£¬ this, is jadesoul";
 	cout<<a.uppered()<<a<<endl;
-	Board::test();
+}
+
+int main () {
+	//test();
+	delete new BoardTest;
 	system("pause");
 }
 
