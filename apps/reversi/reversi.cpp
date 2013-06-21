@@ -12,7 +12,7 @@
 
 void test() {
 	cout<<"hello, world "<<endl;
-	str a="hi£¬ this, is jadesoul";
+	str a="hiï¼Œ this, is jadesoul";
 	cout<<a.uppered()<<a<<endl;
 }
 

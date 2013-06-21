@@ -18,7 +18,7 @@ static const color WHITE=1;
 static const color BLACK=2;
 static const color ACTIVE=3;
 
-//»ñÈ¡¶ÔÊÖµÄÑÕÉ«
+//è·å–å¯¹æ‰‹çš„é¢œè‰²
 #define OPPO(x) (ACTIVE-x)
 
 class Board { 
@@ -27,24 +27,24 @@ public:
 
 	Board() {
 		init_board_map();
-		update_possible_moves(BLACK);//ºÚ×ÓÏÈÏÂ
+		update_possible_moves(BLACK);//é»‘å­å…ˆä¸‹
 	}
 	 
-	//¹¹Ôì³õÊ¼¾ÖÃæ
+	//æ„é€ åˆå§‹å±€é¢
 	inline void init_board_map() {
 		memset(this, EMPTY, sizeof(*this));
 		map[3][4]=map[4][3]=BLACK;
 		map[4][4]=map[3][3]=WHITE;
 	}
 
-	//Çå³ı¾ÖÃæÉÏËùÓĞµÄACTIVE×´Ì¬
+	//æ¸…é™¤å±€é¢ä¸Šæ‰€æœ‰çš„ACTIVEçŠ¶æ€
 	inline void clear_active_states() {
 		color* base=&map[0][0];
 		for_n(i, 64) if (base[i]==ACTIVE) base[i]=EMPTY;
 	}
 
-	//¸ø¶¨ÉÏÒ»´ÎÂä×Ó·½µÄÑÕÉ«
-	//ÖØĞÂÉú³É£¨¸üĞÂ£©¾ÖÃæÉÏËùÓĞµÄACTIVE×´Ì¬
+	//ç»™å®šä¸Šä¸€æ¬¡è½å­æ–¹çš„é¢œè‰²
+	//é‡æ–°ç”Ÿæˆï¼ˆæ›´æ–°ï¼‰å±€é¢ä¸Šæ‰€æœ‰çš„ACTIVEçŠ¶æ€
 	inline void update_possible_moves(color c) {
 		
 	}
@@ -64,19 +64,19 @@ public:
 	}
 	//
 
-	//ÉèÖÃÖ¸¶¨Î»ÖÃµÄÆå×ÓÑÕÉ«
+	//è®¾ç½®æŒ‡å®šä½ç½®çš„æ£‹å­é¢œè‰²
 	inline void set(uint i, uint j, color c) {
 		map[i][j]=c;
 	}
 
-	//ÔÚÖ¸¶¨µÄÎ»ÖÃ·ÅÖÃÖ¸¶¨ÑÕÉ«µÄÆå×Ó£¬¼ì²éÊÇ·ñºÏ·¨
-	//Èô²»ºÏ·¨Ôò·µ»ØÏÂ×ÓÊ§°Ü£¬·ñÔò·µ»Ø³É¹¦
+	//åœ¨æŒ‡å®šçš„ä½ç½®æ”¾ç½®æŒ‡å®šé¢œè‰²çš„æ£‹å­ï¼Œæ£€æŸ¥æ˜¯å¦åˆæ³•
+	//è‹¥ä¸åˆæ³•åˆ™è¿”å›ä¸‹å­å¤±è´¥ï¼Œå¦åˆ™è¿”å›æˆåŠŸ
 	bool play(uint i, uint j, color p) {
 		Board& me=*this;
-		//Âä×Óµã±ØĞëÊÇACTIVE×´Ì¬
+		//è½å­ç‚¹å¿…é¡»æ˜¯ACTIVEçŠ¶æ€
 		color& c=map[i][j];
 		if (c!=ACTIVE) return false;
-		//Èç¹ûÂä×Ó³É¹¦£¬Ôò¸üĞÂĞÂµÄ¶ÔÊÖÂä×Óµã
+		//å¦‚æœè½å­æˆåŠŸï¼Œåˆ™æ›´æ–°æ–°çš„å¯¹æ‰‹è½å­ç‚¹
 		me.set(i, j, p);
 		color o=OPPO(p);
 		clear_active_states();
