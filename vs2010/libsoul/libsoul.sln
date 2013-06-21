@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libsoul", "libsoul\libsoul.vcxproj", "{BEF13E02-6A0C-4D28-8DFA-B8980C252EF5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reversi", "reversi\reversi.vcxproj", "{EE196CF6-7AAE-4636-A526-3130FA71B921}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libsoul", "libsoul\libsoul.vcxproj", "{D7551C02-BA1A-4C30-A4F0-1B649E38BAAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +11,14 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BEF13E02-6A0C-4D28-8DFA-B8980C252EF5}.Debug|Win32.ActiveCfg = Debug|Win32
-		{BEF13E02-6A0C-4D28-8DFA-B8980C252EF5}.Debug|Win32.Build.0 = Debug|Win32
-		{BEF13E02-6A0C-4D28-8DFA-B8980C252EF5}.Release|Win32.ActiveCfg = Release|Win32
-		{BEF13E02-6A0C-4D28-8DFA-B8980C252EF5}.Release|Win32.Build.0 = Release|Win32
+		{EE196CF6-7AAE-4636-A526-3130FA71B921}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EE196CF6-7AAE-4636-A526-3130FA71B921}.Debug|Win32.Build.0 = Debug|Win32
+		{EE196CF6-7AAE-4636-A526-3130FA71B921}.Release|Win32.ActiveCfg = Release|Win32
+		{EE196CF6-7AAE-4636-A526-3130FA71B921}.Release|Win32.Build.0 = Release|Win32
+		{D7551C02-BA1A-4C30-A4F0-1B649E38BAAC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D7551C02-BA1A-4C30-A4F0-1B649E38BAAC}.Debug|Win32.Build.0 = Debug|Win32
+		{D7551C02-BA1A-4C30-A4F0-1B649E38BAAC}.Release|Win32.ActiveCfg = Release|Win32
+		{D7551C02-BA1A-4C30-A4F0-1B649E38BAAC}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
