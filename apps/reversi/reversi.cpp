@@ -12,8 +12,9 @@
 
 int main () {
 	cout<<"hello, world "<<endl;
-	str a="hi";
-	cout<<a<<endl;
-	system("pause"); 
+	str a="hi£¬ this, is jadesoul";
+	cout<<a.uppered()<<a<<endl;
+	Board::test();
+	system("pause");
 }
 

@@ -8,4 +8,6 @@
  * Written In: Peking University, beijing, China
  */
 
+#include "board.h"
+
 

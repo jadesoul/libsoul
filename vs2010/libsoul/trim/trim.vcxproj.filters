@@ -15,17 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\apps\reversi\reversi.cpp">
+    <ClCompile Include="..\..\..\tools\trim.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\apps\reversi\board.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\apps\reversi\README.txt" />
-    <None Include="..\..\..\apps\reversi\test.txt" />
   </ItemGroup>
 </Project>

@@ -5,6 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reversi", "reversi\reversi.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libsoul", "libsoul\libsoul.vcxproj", "{D7551C02-BA1A-4C30-A4F0-1B649E38BAAC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "trim", "trim\trim.vcxproj", "{214EA5CA-FF63-47C8-89C2-D74618BBE944}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -19,6 +21,10 @@ Global
 		{D7551C02-BA1A-4C30-A4F0-1B649E38BAAC}.Debug|Win32.Build.0 = Debug|Win32
 		{D7551C02-BA1A-4C30-A4F0-1B649E38BAAC}.Release|Win32.ActiveCfg = Release|Win32
 		{D7551C02-BA1A-4C30-A4F0-1B649E38BAAC}.Release|Win32.Build.0 = Release|Win32
+		{214EA5CA-FF63-47C8-89C2-D74618BBE944}.Debug|Win32.ActiveCfg = Debug|Win32
+		{214EA5CA-FF63-47C8-89C2-D74618BBE944}.Debug|Win32.Build.0 = Debug|Win32
+		{214EA5CA-FF63-47C8-89C2-D74618BBE944}.Release|Win32.ActiveCfg = Release|Win32
+		{214EA5CA-FF63-47C8-89C2-D74618BBE944}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
