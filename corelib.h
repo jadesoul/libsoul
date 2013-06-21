@@ -3,7 +3,7 @@
 /**
  * File: corelib.h
  * Description: 
- *
+ * 
  * Copyright (c) 2012 Jadesoul (Home Page: http://jadesoul.sinaapp.com)
  * 
  * Date: 2012-12-26 18:11:43.360000

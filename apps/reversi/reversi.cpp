@@ -11,7 +11,9 @@
 #include "board.h"
 
 int main () {
-	cout<<"hello, world"<<endl;
+	cout<<"hello, world "<<endl;
+	str a="hi";
+	cout<<a<<endl;
 	system("pause"); 
 }
 
