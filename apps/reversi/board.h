@@ -1,4 +1,4 @@
-#ifndef BOARD_H_1371483294_09
+﻿#ifndef BOARD_H_1371483294_09
 #define BOARD_H_1371483294_09
 /**
  * File: board.h
@@ -30,9 +30,9 @@ const static uint UP=6;
 const static uint RIGHT_UP=7;
 
 //在各个方向上根据当前坐标计算下一个坐标，根据横纵坐标增量表计算
-const static uint INC_X[8]={1, 1, 0, -1, -1, -1, 0, 1};
-const static uint INC_Y[8]={0, -1, -1, -1, 0, 1, 1, 1};
-#define SET_NEXT(x, y, d) x+=INC_X[d]; y+=INC_Y[d]
+const static int INC_X[8]={1, 1, 0, -1, -1, -1, 0, 1};
+const static int INC_Y[8]={0, -1, -1, -1, 0, 1, 1, 1};
+#define SET_NEXT(x, y, d) (x)+=INC_X[(d)]; (y)+=INC_Y[(d)];
 
 //获取对手的颜色
 #define OPPO(x) (ACTIVE-x)
