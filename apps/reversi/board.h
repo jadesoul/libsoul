@@ -36,7 +36,7 @@ static const uint INC_Y[8]={0, -1, -1, -1, 0, 1, 1, 1};
 
 //获取对手的颜色
 #define OPPO(x) (ACTIVE-x)
-
+ 
 class Board { 
 public:
 	color map[8][8];
