@@ -12,11 +12,27 @@
 
 #include <libsoul>
 
+//棋子状态
 typedef uchar color;
 static const color EMPTY=0;
 static const color WHITE=1;
 static const color BLACK=2;
 static const color ACTIVE=3;
+
+//8个方向
+static const uint RIGHT=0;
+static const uint RIGHT_DOWN=1;
+static const uint DOWN=2;
+static const uint LEFT_DOWN=3;
+static const uint LEFT=4;
+static const uint LEFT_UP=5;
+static const uint UP=6;
+static const uint RIGHT_UP=7;
+
+//在各个方向上根据当前坐标计算下一个坐标，根据横纵坐标增量表计算
+static const uint INC_X[8]={1, 1, 0, -1, -1, -1, 0, 1};
+static const uint INC_Y[8]={0, -1, -1, -1, 0, 1, 1, 1};
+#define SET_NEXT(i, j, d) i+=INC_X[d]; j+=INC_Y[d];
 
 //获取对手的颜色
 #define OPPO(x) (ACTIVE-x)
@@ -53,6 +69,8 @@ public:
 				if (s!=c) continue;
 				//向八个方向探索是否可以吃子
 
+			}
+		}
 	}
 
 	void dump(ostream& o=cout) {
