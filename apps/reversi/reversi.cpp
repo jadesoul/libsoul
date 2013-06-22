@@ -1,4 +1,4 @@
-/**
+﻿/**
  * File: reversi.cpp
  * Description: 
  *
@@ -9,6 +9,7 @@
  */
 
 #include "board.h"
+#include "game.h"
 
 void test() {
 	cout<<"hello, world "<<endl;

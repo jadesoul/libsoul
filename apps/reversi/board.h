@@ -60,9 +60,11 @@ public:
 	}
 
 	//给定上一次落子方的颜色
-	//重新生成（更新）局面上所有的ACTIVE状态
-	void update_possible_moves(color s) {
+	//重新生成（更新）局面上所有的ACTIVE位置
+	//返回所有被激活的ACTIVE位置数，也就是行动力值
+	uint update_possible_moves(color s) {
 		clear_active_states();//先清除状态
+		uint mobility=0;//行动力值
 		for_n(i, 8) {
 			for_n(j, 8) {
 				color& c=map[i][j];
@@ -71,14 +73,17 @@ public:
 				//向八个方向探索是否可以吃子
 				for_n(d, 8) {
 					uint x=i, y=j;
+					uint cnt=0;//该方向上能吃几个子
 					SET_NEXT(x, y, d);
 					while (x<8 AND y<8 AND map[x][y]==o) {//注意x, y都是uint，一定非负
+						cnt+=1;//累加吃子数
 						SET_NEXT(x, y, d);//探测下一个位置
 					}
 					if (x<8 AND y<8) {
 						//没碰墙，要么是自己的子，要么是空子，或者已经是ACTIVE
-						if (map[x][y]==EMPTY) {//如果是空子，则激活
+						if (map[x][y]==EMPTY AND cnt>0) {//如果是空子且能吃子，则激活
 							map[x][y]=ACTIVE;
+							mobility+=1;//新增一个行动力
 						} else {
 							//已激活或者是自己的子
 							continue;
@@ -90,10 +95,16 @@ public:
 				}
 			}
 		}
+		cout<<"mobility="<<mobility<<endl;
+		return mobility;
 	}
 
 	void dump(ostream& o=cout) {
+		o<<endl<<'+'<<' ';
+		for_n(j, 8) o<<j<<' ';
+		o<<endl;
 		for_n(i, 8) {
+			o<<i<<' ';
 			for_n(j, 8) {
 				color& c=map[i][j];
 				if (c==EMPTY) o<<'.';
@@ -104,30 +115,63 @@ public:
 			}
 			o<<endl;
 		}
+		o<<"--------------------------------------------"<<endl;
 	}
-
+	
+	friend inline ostream& operator<<(ostream& o, Board& b) {
+		b.dump(o);
+		return o;
+	}
+	
 	//设置指定位置的棋子颜色
 	inline void set(uint i, uint j, color c) {
 		map[i][j]=c;
 	}
 
 	//在指定的位置放置指定颜色的棋子，检查是否合法
-	//若不合法则返回下子失败，否则返回成功
-	bool play(uint i, uint j, color p) {
+	//若不合法则返回0，否则返回吃子数，吃子数一定不是0
+	uint play(uint i, uint j, color s) {
 		Board& me=*this;
 		//落子点必须是ACTIVE状态
 		color& c=map[i][j];
-		if (c!=ACTIVE) return false;
+		if (c!=ACTIVE) return 0;
 		//如果落子成功，则更新新的对手落子点
-		me.set(i, j, p);
-		color o=OPPO(p);
-		update_possible_moves(o);
-		return true;
-	}
-
-	friend inline ostream& operator<<(ostream& o, Board& b) { 
-		b.dump(o);
-		return o;
+		me.set(i, j, s);//在下子处落子
+		//同时将各个方向上所吃的子翻转为自己的子
+		color o=OPPO(s);
+		
+		uint all_cnt=0;//记录所有方向上总吃子数
+		for_n(d, 8) {
+			uint x=i, y=j;
+			uint cnt=0;//该方向上能吃几个子
+			SET_NEXT(x, y, d);
+			while (x<8 AND y<8 AND map[x][y]==o) {//注意x, y都是uint，一定非负
+				cnt+=1;//累加吃子数
+				SET_NEXT(x, y, d);//探测下一个位置
+			}
+			if (x<8 AND y<8) {//没碰墙
+				if (map[x][y]==s AND cnt>0) {//如果是自己的子且可吃子，则吃子
+					uint d_inverse=(d+4)%8;//向相反的方向顺序扫描并吃子
+					SET_NEXT(x, y, d_inverse);
+					while (map[x][y]==o) {//一定不会越界，直到遇到下子点才结束
+						map[x][y]=s;
+						SET_NEXT(x, y, d_inverse);
+					}
+					all_cnt+=cnt;//累加总吃子数
+				} else {
+					//不能吃子，或者是一个激活状态
+					continue;
+				}
+			} else {
+				//越界，碰到墙了
+				continue;
+			}
+		}
+		
+		uint mobility=update_possible_moves(o);
+		cout<<"flip stones="<<all_cnt<<endl;
+		assert(all_cnt>0);
+		return all_cnt;
 	}
 };
 
@@ -142,10 +186,11 @@ public:
 	void play() {
 		Board b;
 		b.dump();
-		b.set(0, 7, BLACK);
-		cout<<"b.set(0, 7, BLACK);"<<endl;
+		cout<<"b.play(2, 3, BLACK)="<<b.play(2, 3, BLACK)<<endl;
 		b.dump();
-		cout<<"b.set(6, 2, WHITE)="<<b.play(6, 2, WHITE)<<endl;
+		cout<<"b.play(2, 4, WHITE)="<<b.play(2, 4, WHITE)<<endl;
+		b.dump();
+		cout<<"b.play(4, 5, BLACK)="<<b.play(4, 5, BLACK)<<endl;
 		b.dump();
 	}
 
