@@ -45,8 +45,14 @@ public:
 
 	//给定上一次落子方的颜色
 	//重新生成（更新）局面上所有的ACTIVE状态
-	inline void update_possible_moves(color c) {
-		
+	inline void update_possible_moves(color s) {
+		clear_active_states();//先清除状态
+		for_n(i, 8) {
+			for_n(j, 8) {
+				color& c=map[i][j];
+				if (s!=c) continue;
+				//向八个方向探索是否可以吃子
+
 	}
 
 	void dump(ostream& o=cout) {
@@ -62,7 +68,6 @@ public:
 			o<<endl;
 		}
 	}
-	//
 
 	//设置指定位置的棋子颜色
 	inline void set(uint i, uint j, color c) {
@@ -79,7 +84,6 @@ public:
 		//如果落子成功，则更新新的对手落子点
 		me.set(i, j, p);
 		color o=OPPO(p);
-		clear_active_states();
 		update_possible_moves(o);
 		return true;
 	}
@@ -88,21 +92,17 @@ public:
 		b.dump(o);
 		return o;
 	}
-
-	static void test() {
-
-	}
 };
 
 class BoardTest {
 public:
 	BoardTest() {
 		//cout<<"sizeof(Board)="<<sizeof(Board)<<endl;
-		//test_set();
-		test_play();
+		//set();
+		play();
 	}
 
-	void test_play() {
+	void play() {
 		Board b;
 		b.dump();
 		b.set(0, 7, BLACK);
@@ -112,7 +112,7 @@ public:
 		b.dump();
 	}
 
-	void test_set() {
+	void set() {
 		Board b;
 		b.dump();
 		b.set(0, 7, BLACK);
