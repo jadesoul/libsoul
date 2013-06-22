@@ -14,24 +14,24 @@
 
 //棋子状态
 typedef uchar color;
-static const color EMPTY=0;
-static const color WHITE=1;
-static const color BLACK=2;
-static const color ACTIVE=3;
+const static color EMPTY=0;
+const static color WHITE=1;
+const static color BLACK=2;
+const static color ACTIVE=3;
 
 //8个方向
-static const uint RIGHT=0;
-static const uint RIGHT_DOWN=1;
-static const uint DOWN=2;
-static const uint LEFT_DOWN=3;
-static const uint LEFT=4;
-static const uint LEFT_UP=5;
-static const uint UP=6;
-static const uint RIGHT_UP=7;
+const static uint RIGHT=0;
+const static uint RIGHT_DOWN=1;
+const static uint DOWN=2;
+const static uint LEFT_DOWN=3;
+const static uint LEFT=4;
+const static uint LEFT_UP=5;
+const static uint UP=6;
+const static uint RIGHT_UP=7;
 
 //在各个方向上根据当前坐标计算下一个坐标，根据横纵坐标增量表计算
-static const uint INC_X[8]={1, 1, 0, -1, -1, -1, 0, 1};
-static const uint INC_Y[8]={0, -1, -1, -1, 0, 1, 1, 1};
+const static uint INC_X[8]={1, 1, 0, -1, -1, -1, 0, 1};
+const static uint INC_Y[8]={0, -1, -1, -1, 0, 1, 1, 1};
 #define SET_NEXT(x, y, d) x+=INC_X[d]; y+=INC_Y[d]
 
 //获取对手的颜色
@@ -45,7 +45,7 @@ public:
 		init_board_map();
 		update_possible_moves(BLACK);//黑子先下
 	}
-	 
+	
 	//构造初始局面
 	inline void init_board_map() {
 		memset(this, EMPTY, sizeof(*this));
@@ -61,28 +61,31 @@ public:
 
 	//给定上一次落子方的颜色
 	//重新生成（更新）局面上所有的ACTIVE状态
-	inline void update_possible_moves(color s) {
+	void update_possible_moves(color s) {
 		clear_active_states();//先清除状态
 		for_n(i, 8) {
 			for_n(j, 8) {
 				color& c=map[i][j];
 				if (c!=s) continue;//寻找所有自己的子
+				color o=OPPO(s);//对方棋子颜色
 				//向八个方向探索是否可以吃子
-				color o=OPPO(s);
 				for_n(d, 8) {
 					uint x=i, y=j;
 					SET_NEXT(x, y, d);
 					while (x<8 AND y<8 AND map[x][y]==o) {//注意x, y都是uint，一定非负
-						SET_NEXT(x, y, d);
+						SET_NEXT(x, y, d);//探测下一个位置
 					}
 					if (x<8 AND y<8) {
-						//越界，碰到墙了
-						continue;
-					} else {
 						//没碰墙，要么是自己的子，要么是空子，或者已经是ACTIVE
 						if (map[x][y]==EMPTY) {//如果是空子，则激活
 							map[x][y]=ACTIVE;
-						} else continue;//已激活或者是自己的子
+						} else {
+							//已激活或者是自己的子
+							continue;
+						}
+					} else {
+						//越界，碰到墙了
+						continue;
 					}
 				}
 			}
@@ -96,7 +99,7 @@ public:
 				if (c==EMPTY) o<<'.';
 				else if (c==BLACK) o<<'X';
 				else if (c==WHITE) o<<'O';
-				else o<<'A';
+				else o<<'*';
 				o<<' ';
 			}
 			o<<endl;
