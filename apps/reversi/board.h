@@ -41,10 +41,12 @@ class Board {
 public:
 	color map[8][8];//存放64个棋子状态
 	uchar total[4];//存放4种颜色棋子的个数并动态跟新，其中ACTIVE的个数与EMPTY个数重叠
+	color turn;//当前轮到哪方下子
 	
 	Board() {
 		init_board_map();
-		update_possible_moves(BLACK);//黑子先下
+		turn=BLACK;
+		update_possible_moves(turn);//黑子先下
 	}
 	
 	//构造初始局面
@@ -124,6 +126,10 @@ public:
 		}
 		o<<"BLACK="<<(uint)total[BLACK]<<" WHITE="<<(uint)total[WHITE];
 		o<<" EMPTY="<<(uint)total[EMPTY]<<" ACTIVE="<<(uint)total[ACTIVE]<<endl;
+		o<<"turn=";
+		if (turn==BLACK) o<<"BLACK";
+		else o<<"WHITE";
+		o<<endl;
 		o<<"--------------------------------------------"<<endl;
 	}
 	
@@ -132,16 +138,27 @@ public:
 		return o;
 	}
 	
-	//设置指定位置的棋子颜色
-	// inline void set(uint i, uint j, color c) {
-		// map[i][j]=c;
-	// }
+	//设置指定位置的棋子颜色，本函数仅用于布局
+	inline void set(uint i, uint j, color c) {
+		assert(c==BLACK OR c==WHITE OR c==EMPTY);
+		
+		color orig=map[i][j];
+		if (orig==c) return;
+		
+		total[orig]-=1;
+		if (orig==ACTIVE) total[EMPTY]-=1;
+		
+		map[i][j]=c;
+		
+		total[c]+=1;
+	}
 
 	//在指定的位置放置指定颜色的棋子，检查是否合法
 	//若不合法则返回0，否则返回吃子数，吃子数一定不是0
 	uint play(uint i, uint j, color s) {
 		assert(s==BLACK OR s==WHITE);
-
+		assert(s==turn);
+		
 		//落子点必须是ACTIVE状态
 		color& c=map[i][j];
 		if (c!=ACTIVE) return 0;
@@ -182,10 +199,15 @@ public:
 				continue;
 			}
 		}
-		
-		uint mobility=update_possible_moves(o);
-		cout<<"flip stones="<<all_cnt<<endl;
 		assert(all_cnt>0);
+		//把对手的子翻转成了自己的子
+		total[o]-=all_cnt;
+		total[s]+=all_cnt;
+		
+		turn=o;
+		update_possible_moves(turn);
+		cout<<"flip stones="<<all_cnt<<endl;
+		
 		return all_cnt;
 	}
 };
@@ -194,7 +216,7 @@ class BoardTest {
 public:
 	BoardTest() {
 		//cout<<"sizeof(Board)="<<sizeof(Board)<<endl;
-		//set();
+		// set();
 		play();
 	}
 
