@@ -37,10 +37,11 @@ const static int INC_Y[8]={0, -1, -1, -1, 0, 1, 1, 1};
 //获取对手的颜色
 #define OPPO(x) (ACTIVE-x)
  
-class Board { 
+class Board {
 public:
-	color map[8][8];
-
+	color map[8][8];//存放64个棋子状态
+	uchar total[4];//存放4种颜色棋子的个数并动态跟新，其中ACTIVE的个数与EMPTY个数重叠
+	
 	Board() {
 		init_board_map();
 		update_possible_moves(BLACK);//黑子先下
@@ -48,15 +49,20 @@ public:
 	
 	//构造初始局面
 	inline void init_board_map() {
-		memset(this, EMPTY, sizeof(*this));
+		memset(this, 0, sizeof(*this));
 		map[3][4]=map[4][3]=BLACK;
 		map[4][4]=map[3][3]=WHITE;
+		
+		total[BLACK]=total[WHITE]=2;
+		total[EMPTY]=60;
+		total[ACTIVE]=0;
 	}
 
 	//清除局面上所有的ACTIVE状态
 	inline void clear_active_states() {
 		color* base=&map[0][0];
 		for_n(i, 64) if (base[i]==ACTIVE) base[i]=EMPTY;
+		total[ACTIVE]=0;
 	}
 
 	//给定上一次落子方的颜色
@@ -96,6 +102,7 @@ public:
 			}
 		}
 		cout<<"mobility="<<mobility<<endl;
+		total[ACTIVE]=mobility;
 		return mobility;
 	}
 
@@ -115,6 +122,8 @@ public:
 			}
 			o<<endl;
 		}
+		o<<"BLACK="<<(uint)total[BLACK]<<" WHITE="<<(uint)total[WHITE];
+		o<<" EMPTY="<<(uint)total[EMPTY]<<" ACTIVE="<<(uint)total[ACTIVE]<<endl;
 		o<<"--------------------------------------------"<<endl;
 	}
 	
@@ -124,19 +133,25 @@ public:
 	}
 	
 	//设置指定位置的棋子颜色
-	inline void set(uint i, uint j, color c) {
-		map[i][j]=c;
-	}
+	// inline void set(uint i, uint j, color c) {
+		// map[i][j]=c;
+	// }
 
 	//在指定的位置放置指定颜色的棋子，检查是否合法
 	//若不合法则返回0，否则返回吃子数，吃子数一定不是0
 	uint play(uint i, uint j, color s) {
-		Board& me=*this;
+		assert(s==BLACK OR s==WHITE);
+
 		//落子点必须是ACTIVE状态
 		color& c=map[i][j];
 		if (c!=ACTIVE) return 0;
+		
 		//如果落子成功，则更新新的对手落子点
-		me.set(i, j, s);//在下子处落子
+		map[i][j]=s;//首先在下子处落子
+		total[ACTIVE]-=1;
+		total[EMPTY]-=1;
+		total[s]+=1;
+		
 		//同时将各个方向上所吃的子翻转为自己的子
 		color o=OPPO(s);
 		
@@ -193,7 +208,7 @@ public:
 		cout<<"b.play(4, 5, BLACK)="<<b.play(4, 5, BLACK)<<endl;
 		b.dump();
 	}
-
+ 
 	void set() {
 		Board b;
 		b.dump();

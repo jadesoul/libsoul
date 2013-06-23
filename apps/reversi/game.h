@@ -10,8 +10,28 @@
  * Written In: Peking University, beijing, China
  */
 
-#include "board.h"
+#include "player.h"
 
-
+class Game {
+public:
+	Board board;
+	
+	Player& black;
+	Player& white;
+	
+	uint white_cnt;
+	uint black_cnt;
+	uint empty_cnt;
+	
+	Game(Player& black, Player& white):black(black), white(white) {
+		white_cnt=black_cnt=2;
+		empty_cnt=60;
+	}
+	
+	void start() {
+		// while ()
+	}
+};
 
 #endif /* GAME_H_1371896260_1 */
+

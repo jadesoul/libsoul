@@ -20,11 +20,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\apps\reversi\board.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\..\..\apps\reversi\README.txt" />
     <None Include="..\..\..\apps\reversi\test.txt" />
   </ItemGroup>

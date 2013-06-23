@@ -8,7 +8,6 @@
  * Written In: Peking University, beijing, China
  */
 
-#include "board.h"
 #include "game.h"
 
 void test() {
