@@ -18,11 +18,16 @@ public:
 	color oppo;
 	
 	Player(color turn):self(turn), oppo(OPPO(self)) {}
-	virtual void play(Board& b)=0;
+	void pass(Board& b) {//无子可下时，调用此函数
+		//TODO
+	}
+	virtual void play(Board& b)=0;//调用此函数前，需确保有子可下
 };
 
 class HumanPlayer : public Player {
 public:
+	HumanPlayer(color turn): Player(turn) {}
+	
 	void play(Board& b) {
 		uint x, y;
 		do {
@@ -37,6 +42,8 @@ public:
 
 class AIPlayer : public Player {
 public:
+	AIPlayer(color turn): Player(turn) {}
+	
 	void play(Board& b) {
 		//TODO
 	}

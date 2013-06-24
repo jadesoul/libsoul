@@ -73,7 +73,7 @@ public:
 			
 			if (mobility()==0) {
 				pass_cnt+=1;
-				board.play(-1, -1, turn);
+				player.pass(board);
 			} else {
 				black.play(board);
 				pass_cnt=0;
