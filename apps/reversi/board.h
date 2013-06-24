@@ -45,8 +45,34 @@ public:
 	
 	Board() {
 		init_board_map();
-		turn=BLACK;
-		update_possible_moves(turn);//黑子先下
+		turn=BLACK;//黑子先下
+		update_possible_moves(turn);
+	}
+	
+	//从包含65字节的字符串初始化, 棋盘(64字节)，下子方(1字节)
+	void init_from_str(string& query) {
+		assert(query.size()==65);
+		total[EMPTY]=0;
+		total[BLACK]=0;
+		total[WHITE]=0;
+		for_n(x, 8) {
+			for_n(y, 8) {
+				uint i=x*8+y;
+				char c=query[i];
+				if (c=='0') {
+					map[x][y]=EMPTY;
+					total[EMPTY]+=1;
+				} else if (c=='1') {//1代表 BLACK 
+					map[x][y]=BLACK;
+					total[BLACK]+=1;
+				} else if (c=='2') {//2代表 WHITE
+					map[x][y]=WHITE;
+					total[WHITE]+=1;
+				} else assert(false);
+			}
+		}
+		turn=(query[64]=='1')?BLACK:WHITE;
+		update_possible_moves(turn);
 	}
 	
 	//构造初始局面

@@ -31,7 +31,7 @@ public:
 	}
 	
 	void start() {
-		cout<<"Game Start!!"<<endl;
+		log_status("Game Start!!");
 		while (!game_over()) {
 			color& turn=board.turn;
 			Player& player=(turn==BLACK)?black:white;
@@ -45,7 +45,7 @@ public:
 				pass_cnt=0;
 			}
 		}
-		cout<<"Game Over!!"<<endl;
+		log_status("Game Over!!");
 		
 		board.dump();
 		
@@ -59,9 +59,30 @@ public:
 		cout<<endl;
 	}
 	
-	//用于游戏引擎，给定字符串（64字符的游戏局面和1个字符的turn），返回下子的位置坐标 (2个字符)
+	//用于游戏引擎，给定字符串（64字符的游戏局面和1个字符的turn）
+	//返回下子的位置坐标 (2个字符)，下标均是从1开始计算
 	string deal(string& query) {
-		return "00";
+		pass_cnt=0;
+		board.init_from_str(query);
+		color& turn=board.turn;
+		Player& player=(turn==BLACK)?black:white;
+		uchar& mobility=board.total[ACTIVE];
+		
+		if (mobility==0) {
+			pass_cnt+=1;
+			return "00";//表示PASS
+		} else {
+			pass_cnt=0;
+			uchar byte=player.play(board);
+			uchar x=byte>>4, y=byte&0x0F;
+			assert(x<8 AND y<8);
+			char s[3];
+			s[0]='1'+x;//从1开始编号
+			s[1]='1'+y;
+			s[2]=0;
+			return s;
+		}
+		
 	}
 };
 

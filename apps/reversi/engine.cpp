@@ -8,7 +8,10 @@
  * Written In: Peking University, beijing, China
  */
 
+ #define APP_NAME "EngineX"
 #include "game.h"
+
+extern uint verbose=1;
 
 bool check(char* s) {
 	int n=strlen(s);

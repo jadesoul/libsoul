@@ -8,7 +8,10 @@
  * Written In: Peking University, beijing, China
  */
 
+#define APP_NAME "Reversi"
 #include "game.h"
+
+extern uint verbose=1;
 
 int main () {
 	// delete new BoardTest;
