@@ -22,7 +22,8 @@ public:
 	uint pass_cnt;//PASS次数
 	
 	inline bool game_over() {//无子可下，或者连续两次PASS
-		return empty_cnt()==0 OR pass_cnt>=2;
+		uchar& empty_cnt=board.total[EMPTY];
+		return empty_cnt==0 OR pass_cnt>=2;
 	}
 	
 	Game(Player& black, Player& white):black(black), white(white) {
@@ -45,10 +46,13 @@ public:
 			}
 		}
 		cout<<"Game Over!!"<<endl;
+		
+		board.dump();
+		
 		uint black_cnt=board.total[BLACK];
 		uint white_cnt=board.total[WHITE];
 		uint empty_cnt=board.total[EMPTY];
-		cout<<"BLACK:"<<black_cnt<<"WHITE:"<<white_cnt<<"EMPTY:"<<empty_cnt<<endl;
+		cout<<"BLACK:"<<black_cnt<<" WHITE:"<<white_cnt<<" EMPTY:"<<empty_cnt<<endl;
 		if (black_cnt>white_cnt) cout<<"winner is BLACK";
 		else if (black_cnt<white_cnt) cout<<"winner is WHITE";
 		else cout<<"draw game";
@@ -59,11 +63,18 @@ public:
 class GameTest {
 public:
 	GameTest() {
-		start();
+		// start_human_vs_human();
+		start_AI_vs_AI();
 	}
 	
-	void start() {
+	void start_human_vs_human() {
 		HumanPlayer black(BLACK), white(WHITE);
+		Game game(black, white);
+		game.start();
+	}
+	
+	void start_AI_vs_AI() {
+		AIPlayer black(BLACK), white(WHITE);
 		Game game(black, white);
 		game.start();
 	}

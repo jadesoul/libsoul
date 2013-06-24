@@ -50,7 +50,19 @@ public:
 	AIPlayer(color turn): Player(turn) {}
 	
 	void play(Board& b) {
-		//TODO
+		assert(self==b.turn);
+		b.dump();
+		for_n(x, 8) {
+			for_n(y, 8) {
+				if (b.map[x][y]==ACTIVE) {
+					if (self==BLACK) cout<<"BLACK ";
+					else cout<<"WHITE ";
+					cout<<"AIPlayer, play at ("<<x<<", "<<y<<")"<<endl;
+					b.play(x, y);
+					return;
+				}
+			}
+		}
 	}
 };
 

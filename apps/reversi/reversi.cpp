@@ -10,14 +10,7 @@
 
 #include "game.h"
 
-void test() {
-	cout<<"hello, world "<<endl;
-	str a="hi， this, is jadesoul";
-	cout<<a.uppered()<<a<<endl;
-}
-
 int main () {
-	//test();
 	// delete new BoardTest;
 	delete new GameTest;
 	system("pause");
