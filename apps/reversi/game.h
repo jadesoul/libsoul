@@ -21,22 +21,6 @@ public:
 	
 	uint pass_cnt;//PASS次数
 	
-	inline uint white_cnt() {
-		return board.total[WHITE];
-	}
-	
-	inline uint black_cnt() {
-		return board.total[BLACK];
-	}
-	
-	inline uint empty_cnt() {
-		return board.total[EMPTY];
-	}
-	
-	inline uint mobility() {
-		return board.total[ACTIVE];
-	}
-	
 	inline bool game_over() {//无子可下，或者连续两次PASS
 		return empty_cnt()==0 OR pass_cnt>=2;
 	}
@@ -50,8 +34,9 @@ public:
 		while (!game_over()) {
 			color& turn=board.turn;
 			Player& player=(turn==BLACK)?black:white;
+			uchar& mobility=board.total[ACTIVE];
 			
-			if (mobility()==0) {
+			if (mobility==0) {
 				board.pass();
 				pass_cnt+=1;
 			} else {
@@ -60,6 +45,14 @@ public:
 			}
 		}
 		cout<<"Game Over!!"<<endl;
+		uint black_cnt=board.total[BLACK];
+		uint white_cnt=board.total[WHITE];
+		uint empty_cnt=board.total[EMPTY];
+		cout<<"BLACK:"<<black_cnt<<"WHITE:"<<white_cnt<<"EMPTY:"<<empty_cnt<<endl;
+		if (black_cnt>white_cnt) cout<<"winner is BLACK";
+		else if (black_cnt<white_cnt) cout<<"winner is WHITE";
+		else cout<<"draw game";
+		cout<<endl;
 	}
 };
 
