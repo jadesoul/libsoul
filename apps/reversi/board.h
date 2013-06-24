@@ -234,11 +234,14 @@ public:
 	void play() {
 		Board b;
 		b.dump();
-		cout<<"b.play(2, 3, BLACK)="<<b.play(2, 3, BLACK)<<endl;
+		cout<<"b.play(2, 3)="<<b.play(2, 3)<<endl;
 		b.dump();
-		cout<<"b.play(2, 4, WHITE)="<<b.play(2, 4, WHITE)<<endl;
+		cout<<"b.play(2, 4)="<<b.play(2, 4)<<endl;
 		b.dump();
-		cout<<"b.play(4, 5, BLACK)="<<b.play(4, 5, BLACK)<<endl;
+		cout<<"b.play(4, 5)="<<b.play(4, 5)<<endl;
+		b.dump();
+		
+		cout<<"b.play(0, 0)="<<b.play(0, 0)<<endl;
 		b.dump();
 	}
  

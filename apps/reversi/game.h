@@ -46,6 +46,7 @@ public:
 	}
 	
 	void start() {
+		cout<<"Game Start!!"<<endl;
 		while (!game_over()) {
 			color& turn=board.turn;
 			Player& player=(turn==BLACK)?black:white;
@@ -58,15 +59,21 @@ public:
 				pass_cnt=0;
 			}
 		}
+		cout<<"Game Over!!"<<endl;
 	}
 };
 
 class GameTest {
 public:
 	GameTest() {
-		play();
+		start();
 	}
 	
+	void start() {
+		HumanPlayer black(BLACK), white(WHITE);
+		Game game(black, white);
+		game.start();
+	}
 };
 
 #endif /* GAME_H_1371896260_1 */

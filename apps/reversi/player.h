@@ -29,12 +29,19 @@ public:
 		assert(self==b.turn);
 		uint x, y;
 		do {
-			cout<<"Please input point for play (x, y), x=";
+			
+			b.dump();
+			if (self==BLACK) cout<<"BLACK ";
+			else cout<<"WHITE ";
+			cout<<"HumanPlayer, Please input point for play:"<<endl;
+			cout<<"x=";
 			cin>>x;
 			cout<<"y=";
 			cin>>y;
 			cout<<endl;
-		} while (b.play(x, y, self)==0);
+			cout<<"(x, y)=("<<x<<", "<<y<<")"<<endl;
+			
+		} while (x<8 AND y<8 AND b.play(x, y)==0);
 	}
 };
 

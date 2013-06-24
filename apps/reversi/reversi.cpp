@@ -18,7 +18,8 @@ void test() {
 
 int main () {
 	//test();
-	delete new BoardTest;
+	// delete new BoardTest;
+	delete new GameTest;
 	system("pause");
 }
 
