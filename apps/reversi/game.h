@@ -19,18 +19,76 @@ public:
 	Player& black;
 	Player& white;
 	
-	uint white_cnt;
-	uint black_cnt;
-	uint empty_cnt;
+	uint pass_cnt;//PASS次数
+	
+	inline uint white_cnt() {
+		return board.total[WHITE];
+	}
+	
+	inline uint black_cnt() {
+		return board.total[BLACK];
+	}
+	
+	inline uint empty_cnt() {
+		return board.total[EMPTY];
+	}
+	
+	inline uint mobility() {
+		return board.total[ACTIVE];
+	}
+	
+	inline bool game_over() {//无子可下，或者连续两次PASS
+		return empty_cnt()==0 OR pass_cnt>=2;
+	}
 	
 	Game(Player& black, Player& white):black(black), white(white) {
-		white_cnt=black_cnt=2;
-		empty_cnt=60;
+		pass_cnt=0;
 	}
 	
 	void start() {
-		// while ()
+		// while (!game_over()) {
+			// color& turn=board.turn;
+			// if (turn==BLACK) {
+				// if (mobility()==0) {
+					// pass_cnt+=1;
+					// turn=WHITE;
+				// } else {
+					// black.play(board);
+					// pass_cnt=0;
+				// }
+			// } else {
+				// if (mobility()==0) {
+					// pass_cnt+=1;
+					// turn=BLACK;
+				// } else {
+					// white.play(board);
+					// pass_cnt=0;
+				// }
+			// }
+		// }
+		
+		while (!game_over()) {
+			color& turn=board.turn;
+			Player& player=(turn==BLACK)?black:white;
+			
+			if (mobility()==0) {
+				pass_cnt+=1;
+				board.play(-1, -1, turn);
+			} else {
+				black.play(board);
+				pass_cnt=0;
+			}
+			
+		}
 	}
+};
+
+class GameTest {
+public:
+	GameTest() {
+		play();
+	}
+	
 };
 
 #endif /* GAME_H_1371896260_1 */
