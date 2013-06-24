@@ -1,4 +1,4 @@
-#ifndef PLAYER_H_1371915057_31
+﻿#ifndef PLAYER_H_1371915057_31
 #define PLAYER_H_1371915057_31
 /**
  * File: player.h
@@ -18,14 +18,17 @@ public:
 	color oppo;
 	
 	Player(color turn):self(turn), oppo(OPPO(self)) {}
-	virtual void play(Board& b)=0;//调用此函数前，需确保有子可下
+	
+	//下子的抽象接口，返回一个字节共8bit，(前4bit, 后4bit)代表下子位置(x, y)
+	//调用此函数前，需确保有子可下
+	virtual uchar play(Board& b)=0;
 };
 
 class HumanPlayer : public Player {
 public:
 	HumanPlayer(color turn): Player(turn) {}
 	
-	void play(Board& b) {
+	uchar play(Board& b) {
 		assert(self==b.turn);
 		uint x, y;
 		do {
@@ -42,6 +45,7 @@ public:
 			cout<<"(x, y)=("<<x<<", "<<y<<")"<<endl;
 			
 		} while (x<8 AND y<8 AND b.play(x, y)==0);
+		return (x<<4)+y;
 	}
 };
 
@@ -49,7 +53,7 @@ class AIPlayer : public Player {
 public:
 	AIPlayer(color turn): Player(turn) {}
 	
-	void play(Board& b) {
+	uchar play(Board& b) {
 		assert(self==b.turn);
 		b.dump();
 		for_n(x, 8) {
@@ -59,10 +63,12 @@ public:
 					else cout<<"WHITE ";
 					cout<<"AIPlayer, play at ("<<x<<", "<<y<<")"<<endl;
 					b.play(x, y);
-					return;
+					return (x<<4)+y;
 				}
 			}
 		}
+		assert(false);
+		return 0;
 	}
 };
 

@@ -1,4 +1,4 @@
-#ifndef GAME_H_1371896260_1
+﻿#ifndef GAME_H_1371896260_1
 #define GAME_H_1371896260_1
 /**
  * File: game.h
@@ -57,6 +57,11 @@ public:
 		else if (black_cnt<white_cnt) cout<<"winner is WHITE";
 		else cout<<"draw game";
 		cout<<endl;
+	}
+	
+	//用于游戏引擎，给定字符串（64字符的游戏局面和1个字符的turn），返回下子的位置坐标 (2个字符)
+	string deal(string& query) {
+		return "00";
 	}
 };
 

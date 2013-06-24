@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libsoul", "libsoul\libsoul.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "trim", "trim\trim.vcxproj", "{214EA5CA-FF63-47C8-89C2-D74618BBE944}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "engine", "engine\engine.vcxproj", "{A5705547-79FC-4EB5-9260-B45AE5A206BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -35,6 +37,12 @@ Global
 		{214EA5CA-FF63-47C8-89C2-D74618BBE944}.Release|Win32.Build.0 = Release|Win32
 		{214EA5CA-FF63-47C8-89C2-D74618BBE944}.Release|x64.ActiveCfg = Release|x64
 		{214EA5CA-FF63-47C8-89C2-D74618BBE944}.Release|x64.Build.0 = Release|x64
+		{A5705547-79FC-4EB5-9260-B45AE5A206BB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A5705547-79FC-4EB5-9260-B45AE5A206BB}.Debug|Win32.Build.0 = Debug|Win32
+		{A5705547-79FC-4EB5-9260-B45AE5A206BB}.Debug|x64.ActiveCfg = Debug|Win32
+		{A5705547-79FC-4EB5-9260-B45AE5A206BB}.Release|Win32.ActiveCfg = Release|Win32
+		{A5705547-79FC-4EB5-9260-B45AE5A206BB}.Release|Win32.Build.0 = Release|Win32
+		{A5705547-79FC-4EB5-9260-B45AE5A206BB}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

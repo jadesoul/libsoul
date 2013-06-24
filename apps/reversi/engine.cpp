@@ -1,0 +1,32 @@
+﻿/**
+ * File: engine.cpp
+ * Description: 
+ *
+ * Copyright (c) 2012 Jadesoul (Home Page: http://jadesoul.sinaapp.com)
+ * 
+ * Date: 2013-06-24 17:49:20.175000
+ * Written In: Peking University, beijing, China
+ */
+
+#include "game.h"
+
+bool check(char* s) {
+	int n=strlen(s);
+	if (n!=65) return false;
+	for (int i=0; i<64; ++i) {
+		if (!(s[i]=='0' || s[i]=='1' || s[i]=='2'))
+			return false;
+	}
+	if (!(s[64]=='1' || s[64]=='2'))
+		return false;
+	return true;
+}
+
+void main(int argc, char * argv[]) {
+	cout<<"Content-Type: text/plain; charset=utf8\n\n";
+	if (argc!=2 || !check(argv[1])) return;
+	AIPlayer black(BLACK), white(WHITE);
+	Game game(black, white);
+	string query=argv[1];
+	cout<<game.deal(query);
+}
