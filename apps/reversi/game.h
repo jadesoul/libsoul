@@ -72,10 +72,10 @@ public:
 			Player& player=(turn==BLACK)?black:white;
 			
 			if (mobility()==0) {
-				pass_cnt+=1;
 				player.pass(board);
+				pass_cnt+=1;
 			} else {
-				black.play(board);
+				player.play(board);
 				pass_cnt=0;
 			}
 			
