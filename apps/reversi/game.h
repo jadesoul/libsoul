@@ -47,16 +47,19 @@ public:
 		}
 		log_status("Game Over!!");
 		
-		board.dump();
+		board.dump(clog);
 		
 		uint black_cnt=board.total[BLACK];
 		uint white_cnt=board.total[WHITE];
 		uint empty_cnt=board.total[EMPTY];
-		cout<<"BLACK:"<<black_cnt<<" WHITE:"<<white_cnt<<" EMPTY:"<<empty_cnt<<endl;
-		if (black_cnt>white_cnt) cout<<"winner is BLACK";
-		else if (black_cnt<white_cnt) cout<<"winner is WHITE";
-		else cout<<"draw game";
-		cout<<endl;
+		log_info("BLACK:"<<black_cnt<<" WHITE:"<<white_cnt<<" EMPTY:"<<empty_cnt);
+		if (black_cnt>white_cnt) {
+			log_info("winner is BLACK");
+		} else if (black_cnt<white_cnt) {
+			log_info("winner is WHITE");
+		} else {
+			log_info("draw game");
+		}
 	}
 	
 	//用于游戏引擎，给定字符串（64字符的游戏局面和1个字符的turn）

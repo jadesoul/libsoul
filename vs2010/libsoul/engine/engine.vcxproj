@@ -83,6 +83,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="..\libsoul\libsoul.vcxproj">
+      <Project>{d7551c02-ba1a-4c30-a4f0-1b649e38baac}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\reversi\reversi.vcxproj">
       <Project>{ee196cf6-7aae-4636-a526-3130fa71b921}</Project>
     </ProjectReference>

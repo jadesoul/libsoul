@@ -55,13 +55,11 @@ public:
 	
 	uchar play(Board& b) {
 		assert(self==b.turn);
-		b.dump();
+		b.dump(clog);
 		for_n(x, 8) {
 			for_n(y, 8) {
 				if (b.map[x][y]==ACTIVE) {
-					if (self==BLACK) cout<<"BLACK ";
-					else cout<<"WHITE ";
-					cout<<"AIPlayer, play at ("<<x<<", "<<y<<")"<<endl;
+					log_info(((self==BLACK)?"BLACK":"WHITE")<<" AIPlayer, play at ("<<x<<", "<<y<<")");
 					b.play(x, y);
 					return (x<<4)+y;
 				}

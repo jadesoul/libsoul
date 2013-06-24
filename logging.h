@@ -38,17 +38,11 @@ extern uint verbose;
 #define LOG_LEVEL_FATAL 60
 
 #define log_debug(...) if (verbose!=LOG_LEVEL_NONE AND verbose<=LOG_LEVEL_DEBUG) { LOG_BEGIN; clog<<LOG_SINATURE<<LOG_MODE_DEBUG<<LOG_SPLITER<< __VA_ARGS__ <<endl ; }
-
 #define log_info(...) if (verbose!=LOG_LEVEL_NONE AND verbose<=LOG_LEVEL_INFO) { LOG_BEGIN; clog<<LOG_SINATURE<<LOG_MODE_INFO<<LOG_SPLITER<< __VA_ARGS__ <<endl ; }
-
 #define log_status(...) if (verbose!=LOG_LEVEL_NONE AND verbose<=LOG_LEVEL_STATUS) { LOG_BEGIN; clog<<LOG_SINATURE<<LOG_MODE_STATUS<<LOG_SPLITER<< __VA_ARGS__ <<endl ; }
-
 #define log_warn(...) if (verbose!=LOG_LEVEL_NONE AND verbose<=LOG_LEVEL_WARN) { LOG_BEGIN; clog<<LOG_SINATURE<<LOG_MODE_WARN<<LOG_SPLITER<< __VA_ARGS__ <<endl ; }
-
 #define log_error(...) if (verbose!=LOG_LEVEL_NONE AND verbose<=LOG_LEVEL_ERROR) { LOG_BEGIN; clog<<LOG_SINATURE<<LOG_MODE_ERROR<<LOG_SPLITER<< __VA_ARGS__ <<endl ; }
-
 #define die_error(...) { if (verbose!=LOG_LEVEL_NONE AND verbose<=LOG_LEVEL_ERROR) { LOG_BEGIN; clog<<LOG_SINATURE<<LOG_MODE_ERROR<<LOG_SPLITER<< __VA_ARGS__ <<endl ; } exit(1); }
-
 #define log_fatal(...) if (verbose!=LOG_LEVEL_NONE AND verbose<=LOG_LEVEL_FATAL) { LOG_BEGIN; clog<<LOG_SINATURE<<LOG_MODE_FATAL<<LOG_SPLITER<< __VA_ARGS__ <<endl ; }
 
 #endif /* LOGGING_H_1357720107_79 */

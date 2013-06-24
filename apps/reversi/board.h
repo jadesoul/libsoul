@@ -36,7 +36,7 @@ const static int INC_Y[8]={0, -1, -1, -1, 0, 1, 1, 1};
 
 //获取对手的颜色
 #define OPPO(x) (ACTIVE-x)
- 
+
 class Board {
 public:
 	color map[8][8];//存放64个棋子状态
@@ -129,7 +129,7 @@ public:
 				}
 			}
 		}
-		cout<<"mobility="<<mobility<<endl;
+		log_info("mobility="<<mobility);
 		total[ACTIVE]=mobility;
 		return mobility;
 	}
@@ -182,14 +182,14 @@ public:
 	//turn方PASS，放弃下子，需满足ACTIVE个数为0
 	inline void pass() {
 		assert(total[ACTIVE]==0);
-		cout<<"pass ..."<<endl;
+		log_status("pass ...");
 		swap_turn();//交换下子方
 		update_possible_moves(turn);
 	}
 	
 	//交换下子方
 	inline void swap_turn() {
-		cout<<"swap turn ..."<<endl;
+		log_status("swap turn ...");
 		turn=OPPO(turn);
 	}
 	
@@ -245,7 +245,7 @@ public:
 		
 		swap_turn();//交换下子方
 		update_possible_moves(turn);
-		cout<<"flip stones="<<all_cnt<<endl;
+		log_info("flip stones="<<all_cnt);
 		
 		return all_cnt;
 	}
