@@ -46,39 +46,17 @@ public:
 	}
 	
 	void start() {
-		// while (!game_over()) {
-			// color& turn=board.turn;
-			// if (turn==BLACK) {
-				// if (mobility()==0) {
-					// pass_cnt+=1;
-					// turn=WHITE;
-				// } else {
-					// black.play(board);
-					// pass_cnt=0;
-				// }
-			// } else {
-				// if (mobility()==0) {
-					// pass_cnt+=1;
-					// turn=BLACK;
-				// } else {
-					// white.play(board);
-					// pass_cnt=0;
-				// }
-			// }
-		// }
-		
 		while (!game_over()) {
 			color& turn=board.turn;
 			Player& player=(turn==BLACK)?black:white;
 			
 			if (mobility()==0) {
-				player.pass(board);
+				board.pass();
 				pass_cnt+=1;
 			} else {
 				player.play(board);
 				pass_cnt=0;
 			}
-			
 		}
 	}
 };

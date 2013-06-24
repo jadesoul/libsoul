@@ -18,9 +18,6 @@ public:
 	color oppo;
 	
 	Player(color turn):self(turn), oppo(OPPO(self)) {}
-	void pass(Board& b) {//无子可下时，调用此函数
-		//TODO
-	}
 	virtual void play(Board& b)=0;//调用此函数前，需确保有子可下
 };
 
@@ -29,6 +26,7 @@ public:
 	HumanPlayer(color turn): Player(turn) {}
 	
 	void play(Board& b) {
+		assert(self==b.turn);
 		uint x, y;
 		do {
 			cout<<"Please input point for play (x, y), x=";

@@ -153,11 +153,22 @@ public:
 		total[c]+=1;
 	}
 
+	//turn方PASS，放弃下子，需满足ACTIVE个数为0
+	inline void pass() {
+		assert(total[ACTIVE]==0);
+		swap_turn();//交换下子方
+		update_possible_moves(turn);
+	}
+	
+	//交换下子方
+	inline void swap_turn() {
+		turn=OPPO(turn);
+	}
+	
 	//在指定的位置放置指定颜色的棋子，检查是否合法
 	//若不合法则返回0，否则返回吃子数，吃子数一定不是0
-	uint play(uint i, uint j, color s) {
-		assert(s==BLACK OR s==WHITE);
-		assert(s==turn);
+	uint play(uint i, uint j) {
+		color& s=turn;
 		
 		//落子点必须是ACTIVE状态
 		color& c=map[i][j];
@@ -204,7 +215,7 @@ public:
 		total[o]-=all_cnt;
 		total[s]+=all_cnt;
 		
-		turn=o;
+		swap_turn();//交换下子方
 		update_possible_moves(turn);
 		cout<<"flip stones="<<all_cnt<<endl;
 		
