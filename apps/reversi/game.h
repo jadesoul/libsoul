@@ -102,16 +102,16 @@ public:
 	}
 	
 	void AI_vs_AI() {
-		AIPlayer player;
-		AIPlayer& black=player;
-		AIPlayer& white=player;
+		EasyAIPlayer player;
+		Player& black=player;
+		Player& white=player;
 		Game game(black, white);
 		game.start();
 	}
 	
 	void Look1AI_vs_AI() {
 		Look1AIPlayer black;
-		AIPlayer white;
+		EasyAIPlayer white;
 		Game game(black, white);
 		game.start();
 	}

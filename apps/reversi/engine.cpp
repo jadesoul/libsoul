@@ -30,7 +30,9 @@ void main(int argc, char * argv[]) {
 	cout<<"Content-Type: text/plain; charset=utf8\n\n";
 	if (argc!=2 || !check(argv[1])) return;
 	// AIPlayer black(BLACK), white(WHITE);
-	Look1AIPlayer black(BLACK), white(WHITE);
+	Look1AIPlayer player;
+	Player& black=player;
+	Player& white=player;
 	Game game(black, white);
 	string query=argv[1];
 	cout<<game.deal(query);

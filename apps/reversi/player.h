@@ -44,7 +44,7 @@ public:
 class AIPlayer : public Player {
 // public:
 	// virtual uchar play(Board& b)=0;
-}
+};
 
 //最简单的AI，选择第一个可下子的位置下子
 class EasyAIPlayer : public AIPlayer {
