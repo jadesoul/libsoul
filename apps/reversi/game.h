@@ -26,9 +26,7 @@ public:
 		return empty_cnt==0 OR pass_cnt>=2;
 	}
 	
-	Game(Player& black, Player& white):black(black), white(white) {
-		pass_cnt=0;
-	}
+	Game(Player& black, Player& white):black(black), white(white), pass_cnt(0) {}
 	
 	void start() {
 		log_status("Game Start!!");
@@ -92,21 +90,30 @@ public:
 class GameTest {
 public:
 	GameTest() {
-		// start_human_vs_human();
-		start_AI_vs_AI();
+		// human_vs_human();
+		// AI_vs_AI();
+		Look1AI_vs_AI();
 	}
 	
-	void start_human_vs_human() {
+	void human_vs_human() {
 		HumanPlayer black(BLACK), white(WHITE);
 		Game game(black, white);
 		game.start();
 	}
 	
-	void start_AI_vs_AI() {
+	void AI_vs_AI() {
 		AIPlayer black(BLACK), white(WHITE);
 		Game game(black, white);
 		game.start();
 	}
+	
+	void Look1AI_vs_AI() {
+		Look1AIPlayer black(BLACK);
+		AIPlayer white(WHITE);
+		Game game(black, white);
+		game.start();
+	}
+	
 };
 
 #endif /* GAME_H_1371896260_1 */

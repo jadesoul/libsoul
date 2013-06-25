@@ -32,9 +32,8 @@ public:
 		assert(self==b.turn);
 		uint x, y;
 		do {
-			
 			b.dump(clog);
-			log_info(((self==BLACK)?"BLACK":"WHITE"))<<" HumanPlayer, Please input point for play:");
+			log_info(((self==BLACK)?"BLACK":"WHITE")<<" HumanPlayer, Please input point for play:");
 			clog<<"x=";
 			cin>>x;
 			clog<<"y=";
@@ -65,6 +64,42 @@ public:
 		}
 		assert(false);
 		return 0;
+	}
+};
+
+//向后看一步棋的AI
+class Look1AIPlayer : public Player {
+public:
+	Look1AIPlayer(color turn): Player(turn) {}
+	
+	uchar play(Board& b) {
+		assert(self==b.turn);
+		b.dump(clog);
+		
+		uchar best_move=-1;
+		uchar min_mobility=-1;
+		//找出下子之后使得对方行动力最低的一步走法
+		
+		for_n(x, 8) {
+			for_n(y, 8) {
+				if (b.map[x][y]==ACTIVE) {
+					Board think=b;
+					uchar move=(x<<4)+y;//走法
+					uchar eat=think.play(x, y);//吃子数
+					uchar mobility=think.mobility();//对手行动力
+					
+					if (mobility<min_mobility) {
+						min_mobility=mobility;
+						best_move=move;
+					}
+					
+				}
+			}
+		}
+		uint x=best_move>>4, y=best_move&0x0F;
+		log_info(((self==BLACK)?"BLACK":"WHITE")<<" AIPlayer, play at ("<<x<<", "<<y<<")");
+		b.play(x, y);
+		return best_move;
 	}
 };
 

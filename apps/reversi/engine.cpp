@@ -8,7 +8,7 @@
  * Written In: Peking University, beijing, China
  */
 
- #define APP_NAME "EngineX"
+#define APP_NAME "EngineX"
 #include "game.h"
 
 extern uint verbose=50;
@@ -29,7 +29,8 @@ bool check(char* s) {
 void main(int argc, char * argv[]) {
 	cout<<"Content-Type: text/plain; charset=utf8\n\n";
 	if (argc!=2 || !check(argv[1])) return;
-	AIPlayer black(BLACK), white(WHITE);
+	// AIPlayer black(BLACK), white(WHITE);
+	Look1AIPlayer black(BLACK), white(WHITE);
 	Game game(black, white);
 	string query=argv[1];
 	cout<<game.deal(query);
