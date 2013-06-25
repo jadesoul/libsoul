@@ -33,7 +33,7 @@ public:
 		uint x, y;
 		do {
 			
-			b.dump();
+			b.dump(clog);
 			if (self==BLACK) cout<<"BLACK ";
 			else cout<<"WHITE ";
 			cout<<"HumanPlayer, Please input point for play:"<<endl;
