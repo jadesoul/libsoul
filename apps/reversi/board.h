@@ -50,6 +50,7 @@ public:
 	}
 	
 	//从包含65字节的字符串初始化, 棋盘(64字节)，下子方(1字节)
+	//为游戏引擎提供此接口
 	void init_from_str(string& query) {
 		assert(query.size()==65);
 		total[EMPTY]=0;

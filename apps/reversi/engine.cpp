@@ -11,7 +11,7 @@
  #define APP_NAME "EngineX"
 #include "game.h"
 
-extern uint verbose=1;
+extern uint verbose=50;
 
 bool check(char* s) {
 	int n=strlen(s);

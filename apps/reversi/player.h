@@ -34,15 +34,13 @@ public:
 		do {
 			
 			b.dump(clog);
-			if (self==BLACK) cout<<"BLACK ";
-			else cout<<"WHITE ";
-			cout<<"HumanPlayer, Please input point for play:"<<endl;
-			cout<<"x=";
+			log_info(((self==BLACK)?"BLACK":"WHITE"))<<" HumanPlayer, Please input point for play:");
+			clog<<"x=";
 			cin>>x;
-			cout<<"y=";
+			clog<<"y=";
 			cin>>y;
 			cout<<endl;
-			cout<<"(x, y)=("<<x<<", "<<y<<")"<<endl;
+			log_info("(x, y)=("<<x<<", "<<y<<")");
 			
 		} while (x<8 AND y<8 AND b.play(x, y)==0);
 		return (x<<4)+y;
