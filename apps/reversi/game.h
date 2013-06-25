@@ -96,20 +96,22 @@ public:
 	}
 	
 	void human_vs_human() {
-		HumanPlayer black(BLACK), white(WHITE);
+		HumanPlayer black, white;
 		Game game(black, white);
 		game.start();
 	}
 	
 	void AI_vs_AI() {
-		AIPlayer black(BLACK), white(WHITE);
+		AIPlayer player;
+		AIPlayer& black=player;
+		AIPlayer& white=player;
 		Game game(black, white);
 		game.start();
 	}
 	
 	void Look1AI_vs_AI() {
-		Look1AIPlayer black(BLACK);
-		AIPlayer white(WHITE);
+		Look1AIPlayer black;
+		AIPlayer white;
 		Game game(black, white);
 		game.start();
 	}
