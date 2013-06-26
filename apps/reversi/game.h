@@ -138,7 +138,7 @@ public:
 		Game game(black, white);
 		game.start(); 
 	}
-	 
+	
 	void Look1AI_vs_AI() {
 		// EasyAIPlayer black;
 		EasyAIPlayer white;
@@ -152,8 +152,14 @@ public:
 		RandomAIPlayer black;
 		// RandomAIPlayer white;
 		
-		Game game(black, white);
-		game.start();
+		
+		
+		//比赛，多比几盘
+		for_n(100) {
+			Game game(black, white);
+			Score score=game.start();
+			
+		}
 	}
 	
 };
