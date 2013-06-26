@@ -138,7 +138,7 @@ public:
 		Game game(black, white);
 		game.start();
 	}
-	
+	 
 	void Look1AI_vs_AI() {
 		// EasyAIPlayer black;
 		EasyAIPlayer white;
