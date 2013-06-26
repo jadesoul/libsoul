@@ -152,16 +152,16 @@ public:
 		RandomAIPlayer black;
 		// RandomAIPlayer white;
 		
-		
-		
+		uint total=100;
+		uint win[3]={0, 0, 0};
 		//比赛，多比几盘
-		for_n(100) {
+		for_n(total) {
 			Game game(black, white);
 			Score score=game.start();
-			
+			win[score.winner]+=1;
 		}
+		log_status("black win "<<win[BLACK]<<" and white win "<<win[WHITE]<<" in "<<total<<" games, draw="<<win[DRAW]);
 	}
-	
 };
 
 #endif /* GAME_H_1371896260_1 */
