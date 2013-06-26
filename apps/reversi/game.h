@@ -136,7 +136,7 @@ public:
 		Player& black=player;
 		Player& white=player;
 		Game game(black, white);
-		game.start();
+		game.start(); 
 	}
 	 
 	void Look1AI_vs_AI() {
