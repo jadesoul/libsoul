@@ -74,12 +74,17 @@ public:
 		
 		log_debug(b);
 		
+		int mobility=b.mobility();
+		assert(mobility>=1);
+		uint index=random.randint(1, mobility);
 		for_n(x, 8) {
 			for_n(y, 8) {
 				if (b.map[x][y]==ACTIVE) {
-					log_info(((self==BLACK)?"BLACK":"WHITE")<<" AIPlayer, play at ("<<x<<", "<<y<<")");
-					b.play(x, y);
-					return (x<<4)+y;
+					if (--index==0) {
+						log_info(((self==BLACK)?"BLACK":"WHITE")<<" AIPlayer, play at ("<<x<<", "<<y<<")");
+						b.play(x, y);
+						return (x<<4)+y;
+					}
 				}
 			}
 		}

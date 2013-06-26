@@ -12,6 +12,7 @@
 
 #include "bootstrap.h"
 #include "datetime.h"
+#include "random.h"
 #include "debug.h"
 #include "logging.h"
 #include "corelib.h"

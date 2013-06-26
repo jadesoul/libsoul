@@ -9,3 +9,6 @@
  */
 
 #include "random.h"
+
+uint Random::instance_cnt=0;
+Random random;//全局随机对象
