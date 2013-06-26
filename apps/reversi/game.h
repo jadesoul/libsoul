@@ -12,6 +12,43 @@
 
 #include "player.h"
 
+#define DRAW 0//平局
+
+//代表一盘棋结束时的比分
+class Score {
+public:
+	uchar black;//黑方棋子数
+	uchar white;//白方棋子数
+	uchar empty;//未下棋子数
+	uchar winner;//胜利方，取值为BLACK, WHITE, DRAW平局
+	
+	Score(Board& board) {//游戏结束时，将board传入构造对象
+		black=board.total[BLACK];
+		white=board.total[WHITE];
+		empty=board.total[EMPTY];
+		if (black>white) winner=BLACK;
+		else if (black<white) winner=WHITE;
+		else winner=DRAW;
+	}
+	
+	inline uchar win() {
+		return abs(black-white);
+	}
+	
+	void dump(ostream& o=cout) {
+		o<<"BLACK:"<<(uint)black<<" WHITE:"<<(uint)white<<" EMPTY:"<<(uint)empty<<" ";
+		if (winner==BLACK) o<<"BLACK WIN";
+		else if (winner==WHITE) o<<"WHITE WIN";
+		else o<<"DRAW GAME";
+	}
+	
+	friend inline ostream& operator<<(ostream& o, Score& s) {
+		s.dump(o);
+		return o;
+	}
+};
+
+
 class Game {
 public:
 	Board board;
@@ -28,7 +65,7 @@ public:
 	
 	Game(Player& black, Player& white):black(black), white(white), pass_cnt(0) {}
 	
-	void start() {
+	Score start() {
 		log_status("Game Start!!");
 		while (!game_over()) {
 			color& turn=board.turn;
@@ -47,17 +84,10 @@ public:
 		
 		log_debug(board);
 		
-		uint black_cnt=board.total[BLACK];
-		uint white_cnt=board.total[WHITE];
-		uint empty_cnt=board.total[EMPTY];
-		log_status("BLACK:"<<black_cnt<<" WHITE:"<<white_cnt<<" EMPTY:"<<empty_cnt);
-		if (black_cnt>white_cnt) {
-			log_status("winner is BLACK");
-		} else if (black_cnt<white_cnt) {
-			log_status("winner is WHITE");
-		} else {
-			log_status("draw game");
-		}
+		Score score(board);
+		log_status(score);
+		
+		return score;
 	}
 	
 	//用于游戏引擎，给定字符串（64字符的游戏局面和1个字符的turn）
@@ -111,7 +141,7 @@ public:
 	
 	void Look1AI_vs_AI() {
 		// EasyAIPlayer black;
-		// EasyAIPlayer white;
+		EasyAIPlayer white;
 		
 		// Look1AIPlayer black;
 		// Look1AIPlayer white;
@@ -120,7 +150,7 @@ public:
 		// Look2AIPlayer white;
 		
 		RandomAIPlayer black;
-		RandomAIPlayer white;
+		// RandomAIPlayer white;
 		
 		Game game(black, white);
 		game.start();
