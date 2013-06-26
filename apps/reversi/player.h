@@ -26,7 +26,7 @@ public:
 		uchar self=b.turn;
 		uint x, y;
 		do {
-			b.dump(clog);
+			log_debug(b);
 			log_info(((self==BLACK)?"BLACK":"WHITE")<<" HumanPlayer, Please input point for play:");
 			clog<<"x=";
 			cin>>x;
@@ -51,7 +51,9 @@ class EasyAIPlayer : public AIPlayer {
 public:
 	uchar play(Board& b) {
 		uchar self=b.turn;
-		b.dump(clog);
+		
+		log_debug(b);
+		
 		for_n(x, 8) {
 			for_n(y, 8) {
 				if (b.map[x][y]==ACTIVE) {
@@ -71,7 +73,7 @@ class Look1AIPlayer : public AIPlayer {
 public:
 	uchar play(Board& b) {
 		uchar self=b.turn;
-		b.dump(clog);
+		log_debug(b);
 		
 		uchar best_move=-1;
 		uchar min_mobility=-1;
@@ -94,6 +96,7 @@ public:
 				}
 			}
 		}
+		assert(best_move!=-1);
 		uint x=best_move>>4, y=best_move&0x0F;
 		log_info(((self==BLACK)?"BLACK":"WHITE")<<" AIPlayer, play at ("<<x<<", "<<y<<")");
 		b.play(x, y);
@@ -103,32 +106,62 @@ public:
 
 //向后看2步棋的AI
 class Look2AIPlayer : public AIPlayer {
-public:	
+public:
 	uchar play(Board& b) {
 		uchar self=b.turn;
-		b.dump(clog);
+		// if (verbose!=LOG_LEVEL_NONE AND verbose<=LOG_LEVEL_INFO) b.dump(clog);
+		log_debug(b);
 		
 		uchar best_move=-1;
-		uchar min_mobility=-1;
+		
+		//两步棋后当前下子方的平均行动力
+		//即两步棋后当前下子方的总行动力，除以一步棋后对手的总下法数（行动力）
+		//可以理解为，一步棋后，对手的每种下法平均将给自己带来多少行动力
+		float max_avg_mobility=-1;//根据最大化此值选择下法
+		
+		uint total_mobility1;//一步棋后对手的总下法数（行动力）
+		uint total_mobility2;//两步棋后当前下子方的总行动力
+		
+		
 		//找出下子之后使得对方行动力最低的一步走法
 		
-		for_n(x, 8) {
-			for_n(y, 8) {
-				if (b.map[x][y]==ACTIVE) {
-					Board think=b;
-					uchar move=(x<<4)+y;//走法
-					uchar eat=think.play(x, y);//吃子数
-					uchar mobility=think.mobility();//对手行动力
+		for_n(x1, 8) {
+			for_n(y1, 8) {
+				if (b.map[x1][y1]==ACTIVE) {
+					Board think1=b;
+					uchar move1=(x1<<4)+y1;//自己走法
+					uchar eat1=think1.play(x1, y1);//自己吃子数
+					uchar mobility1=think1.mobility();//对手行动力
 					
-					mobility+=eat;//综合考虑行动力与吃子数，优先选择行动力小，吃子数少的下法
-					if (mobility<min_mobility) {
-						min_mobility=mobility;
-						best_move=move;
+					if (mobility1==0) {//如果下某步棋后对手不能下子，则直接下这步棋
+						best_move=move1;
+						goto play;
+					}
+					total_mobility1=mobility1;
+					total_mobility2=0;
+					
+					for_n(x2, 8) {
+						for_n(y2, 8) {
+							if (think1.map[x2][y2]==ACTIVE) {
+								Board think2=think1;
+								uchar move2=(x2<<4)+y2;//对手走法
+								uchar eat2=think2.play(x2, y2);//对手吃子数
+								uchar mobility2=think2.mobility();//自己行动力
+								total_mobility2+=mobility2;	
+							}
+						}
 					}
 					
+					float avg_mobility=float(total_mobility2)/total_mobility1;
+					if (avg_mobility>max_avg_mobility) {
+						max_avg_mobility=avg_mobility;
+						best_move=move1;
+					}
 				}
 			}
 		}
+play:
+		assert(best_move!=-1);
 		uint x=best_move>>4, y=best_move&0x0F;
 		log_info(((self==BLACK)?"BLACK":"WHITE")<<" AIPlayer, play at ("<<x<<", "<<y<<")");
 		b.play(x, y);

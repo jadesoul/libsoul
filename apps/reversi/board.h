@@ -185,14 +185,14 @@ public:
 	//turn方PASS，放弃下子，需满足ACTIVE个数为0
 	inline void pass() {
 		assert(total[ACTIVE]==0);
-		log_status("pass ...");
+		log_info("pass ...");
 		swap_turn();//交换下子方
 		update_possible_moves(turn);
 	}
 	
 	//交换下子方
 	inline void swap_turn() {
-		log_status("swap turn ...");
+		log_info("swap turn ...");
 		turn=OPPO(turn);
 	}
 	

@@ -45,18 +45,18 @@ public:
 		}
 		log_status("Game Over!!");
 		
-		board.dump(clog);
+		log_debug(board);
 		
 		uint black_cnt=board.total[BLACK];
 		uint white_cnt=board.total[WHITE];
 		uint empty_cnt=board.total[EMPTY];
-		log_info("BLACK:"<<black_cnt<<" WHITE:"<<white_cnt<<" EMPTY:"<<empty_cnt);
+		log_status("BLACK:"<<black_cnt<<" WHITE:"<<white_cnt<<" EMPTY:"<<empty_cnt);
 		if (black_cnt>white_cnt) {
-			log_info("winner is BLACK");
+			log_status("winner is BLACK");
 		} else if (black_cnt<white_cnt) {
-			log_info("winner is WHITE");
+			log_status("winner is WHITE");
 		} else {
-			log_info("draw game");
+			log_status("draw game");
 		}
 	}
 	
@@ -111,6 +111,7 @@ public:
 	
 	void Look1AI_vs_AI() {
 		Look1AIPlayer black;
+		// EasyAIPlayer black;
 		EasyAIPlayer white;
 		Game game(black, white);
 		game.start();
