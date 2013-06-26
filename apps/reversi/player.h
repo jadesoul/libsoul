@@ -41,13 +41,33 @@ public:
 };
 
 //所有AI的基类
-class AIPlayer : public Player {
-// public:
-	// virtual uchar play(Board& b)=0;
-};
+class AIPlayer : public Player {};
 
 //最简单的AI，选择第一个可下子的位置下子
 class EasyAIPlayer : public AIPlayer {
+public:
+	uchar play(Board& b) {
+		uchar self=b.turn;
+		
+		log_debug(b);
+		
+		for_n(x, 8) {
+			for_n(y, 8) {
+				if (b.map[x][y]==ACTIVE) {
+					log_info(((self==BLACK)?"BLACK":"WHITE")<<" AIPlayer, play at ("<<x<<", "<<y<<")");
+					b.play(x, y);
+					return (x<<4)+y;
+				}
+			}
+		}
+		assert(false);
+		return 0;
+	}
+};
+
+
+//也是很简单的AI，随机选择一个可下子的位置下子
+class RandomAIPlayer : public AIPlayer {
 public:
 	uchar play(Board& b) {
 		uchar self=b.turn;

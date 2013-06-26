@@ -110,9 +110,15 @@ public:
 	}
 	
 	void Look1AI_vs_AI() {
-		Look1AIPlayer black;
 		// EasyAIPlayer black;
-		EasyAIPlayer white;
+		// EasyAIPlayer white;
+		
+		// Look1AIPlayer black;
+		// Look1AIPlayer white;
+		
+		Look2AIPlayer black;
+		Look2AIPlayer white;
+		
 		Game game(black, white);
 		game.start();
 	}

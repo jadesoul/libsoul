@@ -31,7 +31,8 @@ void main(int argc, char * argv[]) {
 	if (argc!=2 || !check(argv[1])) return;
 	
 	// EasyAIPlayer player;
-	Look1AIPlayer player;
+	Look2AIPlayer player;
+	
 	Player& black=player;
 	Player& white=player;
 	Game game(black, white);
