@@ -9,7 +9,10 @@
  */
 
 #define APP_NAME "EngineX"
+#include "board.h"
+#include "player.h"
 #include "game.h"
+#include "ai.h"
 
 extern uint verbose=50;
 
