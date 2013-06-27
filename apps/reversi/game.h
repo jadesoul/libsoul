@@ -136,10 +136,10 @@ public:
 		// Look1AIPlayer black;
 		// Look1AIPlayer white;
 		
-		// Look2AIPlayer black;
+		Look2AIPlayer black;
 		// Look2AIPlayer white;
 		
-		RandomAIPlayer black;
+		// RandomAIPlayer black;
 		// RandomAIPlayer white;
 		
 		uint total=100;

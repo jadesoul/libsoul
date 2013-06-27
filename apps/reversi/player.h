@@ -194,4 +194,17 @@ play:
 	}
 };
 
+//利用蒙特卡罗搜索算法找出赢棋概率最大的走法
+class MonteCaloAIPlayer : public AIPlayer {
+public:
+	uchar play(Board& b) {
+		uchar self=b.turn;
+		// if (verbose!=LOG_LEVEL_NONE AND verbose<=LOG_LEVEL_INFO) b.dump(clog);
+		log_debug(b);
+		
+		uchar best_move=-1;
+		
+	}
+};
+
 #endif /* PLAYER_H_1371915057_31 */
