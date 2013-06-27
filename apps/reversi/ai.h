@@ -181,7 +181,7 @@ public:
 		
 		
 		RandomAIPlayer player;//用于推演时随机下棋
-		dict<uchar, int> predict;//预测每个下子位置最终的总diff
+		dict<uchar, int> predict;//统计每个下子位置最终的总赢子数
 		
 		for_n(x, 8) {
 			for_n(y, 8) {
@@ -197,7 +197,12 @@ public:
 					for_n(i, 1000) {
 						Game game(player, player, think);//举办一场比赛
 						Score score=game.start();
-						predict[move]+=score.diff();
+						int diff=score.diff();//黑子数减去白子数之差
+						if (self==BLACK) {//如果下子方是黑子，累加diff
+							predict[move]+=diff;
+						} else {//否则，累减（黑棋赢子就是白棋输子）
+							predict[move]-=diff;
+						}
 					}
 				}
 			}
@@ -212,8 +217,10 @@ public:
 			cout<<"move="<<x<<","<<y<<" predict="<<predict[*it]<<endl;	
 		}
 		
+		//在所有走法中找出赢子数最大的走法
 		uchar best_move=-1;
-		if (self==BLACK)
+		
+		
 		int max_diff
 		
 		int a;
