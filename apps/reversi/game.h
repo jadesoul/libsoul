@@ -131,18 +131,18 @@ public:
 	
 	void AI_vs_AI() {
 		// EasyAIPlayer black;
-		// EasyAIPlayer white;
+		EasyAIPlayer white;
 		
 		// Look1AIPlayer black;
 		// Look1AIPlayer white;
 		
 		// Look2AIPlayer black;
-		Look2AIPlayer white;
+		// Look2AIPlayer white;
 		
 		RandomAIPlayer black;
 		// RandomAIPlayer white;
 		
-		uint total=500;
+		uint total=100;
 		log_warn("start "<<total<<" games ...")
 		uint win[3]={0, 0, 0};
 		int total_diff=0;
