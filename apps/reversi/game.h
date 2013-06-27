@@ -48,7 +48,6 @@ public:
 	}
 };
 
-
 class Game {
 public:
 	Board board;
@@ -135,25 +134,27 @@ public:
 		// EasyAIPlayer white;
 		
 		// Look1AIPlayer black;
-		// Look1AIPlayer white;
+		Look1AIPlayer white;
 		
 		// Look2AIPlayer black;
 		// Look2AIPlayer white;
 		
 		RandomAIPlayer black;
-		RandomAIPlayer white;
+		// RandomAIPlayer white;
 		
 		uint total=500;
 		log_warn("start "<<total<<" games ...")
 		uint win[3]={0, 0, 0};
+		int total_diff=0;
 		//比赛，多比几盘
 		for_n(i, total) {
 			Game game(black, white);
 			Score score=game.start();
 			win[score.winner]+=1;
+			total_diff+=score.diff();
 		}
-		log_warn("black win "<<win[BLACK]<<" and white win "
-			<<win[WHITE]<<" draw="<<win[DRAW]);
+		log_warn("black:white="<<win[BLACK]<<":"<<win[WHITE]
+			<<" draw="<<win[DRAW]<<" diff="<<total_diff);
 	}
 };
 
