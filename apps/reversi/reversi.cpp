@@ -11,7 +11,7 @@
 #define APP_NAME "Reversi"
 #include "game.h"
 
-extern uint verbose=30;
+extern uint verbose=40;
 
 int main () {
 	// delete new BoardTest;

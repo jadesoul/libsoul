@@ -31,8 +31,8 @@ public:
 		else winner=DRAW;
 	}
 	
-	inline uchar win() {
-		return abs(black-white);
+	inline int diff() {
+		return black-white;
 	}
 	
 	void dump(ostream& o=cout) {
@@ -121,8 +121,7 @@ class GameTest {
 public:
 	GameTest() {
 		// human_vs_human();
-		// AI_vs_AI();
-		Look1AI_vs_AI();
+		AI_vs_AI();
 	}
 	
 	void human_vs_human() {
@@ -132,16 +131,8 @@ public:
 	}
 	
 	void AI_vs_AI() {
-		EasyAIPlayer player;
-		Player& black=player;
-		Player& white=player;
-		Game game(black, white);
-		game.start(); 
-	}
-	
-	void Look1AI_vs_AI() {
 		// EasyAIPlayer black;
-		EasyAIPlayer white;
+		// EasyAIPlayer white;
 		
 		// Look1AIPlayer black;
 		// Look1AIPlayer white;
@@ -150,17 +141,19 @@ public:
 		// Look2AIPlayer white;
 		
 		RandomAIPlayer black;
-		// RandomAIPlayer white;
+		RandomAIPlayer white;
 		
-		uint total=100;
+		uint total=500;
+		log_warn("start "<<total<<" games ...")
 		uint win[3]={0, 0, 0};
 		//比赛，多比几盘
-		for_n(total) {
+		for_n(i, total) {
 			Game game(black, white);
 			Score score=game.start();
 			win[score.winner]+=1;
 		}
-		log_status("black win "<<win[BLACK]<<" and white win "<<win[WHITE]<<" in "<<total<<" games, draw="<<win[DRAW]);
+		log_warn("black win "<<win[BLACK]<<" and white win "
+			<<win[WHITE]<<" draw="<<win[DRAW]);
 	}
 };
 
