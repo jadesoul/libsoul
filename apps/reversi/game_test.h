@@ -35,16 +35,16 @@ public:
 		// Look1AIPlayer white;
 		
 		// Look2AIPlayer black;
-		// Look2AIPlayer white;
+		Look2AIPlayer white;
 		
-		// RandomAIPlayer black;
-		RandomAIPlayer white;
+		RandomAIPlayer black;
+		// RandomAIPlayer white;
 		
-		MonteCarloAIPlayer black;
+		// MonteCarloAIPlayer black;
 		// MonteCarloAIPlayer white;
 		
 		
-		uint total=1;
+		uint total=100;
 		log_warn("start "<<total<<" games ...")
 		uint win[3]={0, 0, 0};
 		int total_diff=0;
