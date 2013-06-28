@@ -194,7 +194,7 @@ public:
 					predict[move]=0;
 					
 					//利用蒙特卡罗思想，开始随机下棋若干次
-					for_n(i, 1000) {
+					for_n(i, 2000) {
 						Game game(player, player, think);//举办一场比赛
 						Score score=game.start();
 						int diff=score.diff();//黑子数减去白子数之差
@@ -207,26 +207,34 @@ public:
 				}
 			}
 		}
+
+		list<uchar> keys=predict.keys();
 		
 		//for debug
-		cout<<"predict.size()="<<predict.size()<<endl;
-		list<uchar> keys=predict.keys();
+		log_warn("---------- predict.size()="<<predict.size());
 		for_iter(it, list<uchar>, keys) {
 			uchar move=(uchar)*it;
 			uint x=move>>4, y=move&0x0F;
-			cout<<"move="<<x<<","<<y<<" predict="<<predict[*it]<<endl;	
+			log_warn("move="<<x<<","<<y<<" predict="<<predict[*it]);
 		}
 		
 		//在所有走法中找出赢子数最大的走法
 		uchar best_move=-1;
+		int max_diff=min_sint4;
+		for_iter(it, list<uchar>, keys) {
+			uchar move=(uchar)*it;
+			int diff=predict[*it];
+			if (max_diff<diff) {
+				max_diff=diff;
+				best_move=move;
+			}
+		}
 		
-		
-		int max_diff
-		
-		int a;
-		cin>>a;
-		return 0;
-		
+		assert(best_move!=-1);
+		uint x=best_move>>4, y=best_move&0x0F;
+		log_info(((self==BLACK)?"BLACK":"WHITE")<<" AIPlayer, play at ("<<x<<", "<<y<<")");
+		board.play(x, y);
+		return best_move;
 	}
 };
 

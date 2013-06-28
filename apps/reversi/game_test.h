@@ -1,4 +1,4 @@
-#ifndef GAME_TEST_H_1372368585_78
+﻿#ifndef GAME_TEST_H_1372368585_78
 #define GAME_TEST_H_1372368585_78
 /**
  * File: game_test.h
@@ -29,7 +29,7 @@ public:
 	
 	void AI_vs_AI() {
 		// EasyAIPlayer black;
-		EasyAIPlayer white;
+		// EasyAIPlayer white;
 		
 		// Look1AIPlayer black;
 		// Look1AIPlayer white;
@@ -38,13 +38,13 @@ public:
 		// Look2AIPlayer white;
 		
 		// RandomAIPlayer black;
-		// RandomAIPlayer white;
+		RandomAIPlayer white;
 		
 		MonteCarloAIPlayer black;
 		// MonteCarloAIPlayer white;
 		
 		
-		uint total=100;
+		uint total=1;
 		log_warn("start "<<total<<" games ...")
 		uint win[3]={0, 0, 0};
 		int total_diff=0;
