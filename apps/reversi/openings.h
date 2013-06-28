@@ -7,7 +7,7 @@
  * Copyright (c) 2012 Jadesoul (Home Page: http://jadesoul.sinaapp.com)
  * 
  * Date: 2013-06-28 10:59:27.571000
- * Written In: Peking University, beijing, China
+ * Written In: Peking University, beijing, China 
  */
 
 #include <libsoul>
@@ -20,5 +20,7 @@
 //注意棋盘的对称性，规模可以折半
 
 //参考开局策略：http://www.othello-club.de/strategy3.php?lang=en
+
+
 
 #endif /* OPENINGS_H_1372388367_57 */
