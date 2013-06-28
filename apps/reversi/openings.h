@@ -19,4 +19,6 @@
 //使用蒙特卡罗的策略搜索出最佳走法，用数据库记录下来
 //注意棋盘的对称性，规模可以折半
 
+//参考开局策略：http://www.othello-club.de/strategy3.php?lang=en
+
 #endif /* OPENINGS_H_1372388367_57 */
