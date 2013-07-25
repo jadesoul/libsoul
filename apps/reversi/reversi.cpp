@@ -9,7 +9,8 @@
  */
 
 #define APP_NAME "Reversi"
-#include "game.h"
+#include "board_test.h"
+#include "game_test.h"
 
 extern uint verbose=40;
 
