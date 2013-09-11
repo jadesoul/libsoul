@@ -46,9 +46,9 @@ public:
 
 extern Random random;//全局随机对象
 
-class RandamTest {
+class RandomTest {
 public:
-	RandamTest() {
+	RandomTest() {
 		for(int i=-10; i<10; i+=5) {
 			for(int j=-10; j<10; j+=6) {
 				cout<<"randint("<<i<<", "<<j<<")="
