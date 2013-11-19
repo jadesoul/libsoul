@@ -296,7 +296,7 @@ public:
 	**************************************************/
 	// for modifiers
 	inline list& append(const element& r) {
-		push_back(r);
+		container::push_back(r);
 		return *this;
 	}
 	

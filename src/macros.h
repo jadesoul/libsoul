@@ -161,4 +161,8 @@ struct name{\
 #define NEW(type, n) (type *)malloc(sizeof(type)*(n))
 #define FREE(ptr) free((void *)ptr)
 
+#define JADESOUL_GMAIL "wslgb2006@gmail.com"
+#define JADESOUL_ALIMAIL "shenglan.wsl@alibaba-inc.com"
+#define JADESOUL_EMAIL JADESOUL_ALIMAIL
+
 #endif /* MACROS_H_1324964318_13 */

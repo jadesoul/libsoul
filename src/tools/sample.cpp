@@ -8,7 +8,7 @@
  * Written In: Peking University, beijing, China
  */
 
-#include <jadesoul.h>
+#include <libsoul>
 
 int main () {
 	cout<<"hello, world"<<endl;

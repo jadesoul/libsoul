@@ -5,6 +5,7 @@ set(apps
 	trim
 	body
 	caser
+	sample
 )
 
 foreach(app ${apps})

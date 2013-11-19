@@ -44,29 +44,29 @@ public:
 	}
 };
 
-extern Random random;//全局随机对象
+// static Random rand;//全局随机对象
 
-class RandomTest {
-public:
-	RandomTest() {
-		for(int i=-10; i<10; i+=5) {
-			for(int j=-10; j<10; j+=6) {
-				cout<<"randint("<<i<<", "<<j<<")="
-					<<random.randint(i, j)<<endl;
-			}
-		}
-		map<uint, uint> freq;		
-		for_n(i, 30000) {
-			uint r=random.randint(1, 5);
-			freq[r]+=1;
-		}
-		cout<<freq[1]<<endl;
-		cout<<freq[2]<<endl;
-		cout<<freq[3]<<endl;
-		cout<<freq[4]<<endl;
-		cout<<freq[5]<<endl;
-	}
-};
+// class RandomTest {
+// public:
+	// RandomTest() {
+		// for(int i=-10; i<10; i+=5) {
+			// for(int j=-10; j<10; j+=6) {
+				// cout<<"randint("<<i<<", "<<j<<")="
+					// <<random.randint(i, j)<<endl;
+			// }
+		// }
+		// map<uint, uint> freq;		
+		// for_n(i, 30000) {
+			// uint r=random.randint(1, 5);
+			// freq[r]+=1;
+		// }
+		// cout<<freq[1]<<endl;
+		// cout<<freq[2]<<endl;
+		// cout<<freq[3]<<endl;
+		// cout<<freq[4]<<endl;
+		// cout<<freq[5]<<endl;
+	// }
+// };
 
 
 #endif /* RANDOM_H_1356527036_22 */

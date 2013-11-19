@@ -53,7 +53,7 @@ int main (int argc, const char* argv[]) {
 		.usage("%prog [OPTIONS] [FILE]")
 		.version("1.0")
 		.epilog("By jadesoul @ 2012-12-24\n"
-			"please report bugs to wslgb2006@gmail.com");
+			"please report bugs to " JADESOUL_EMAIL );
 	parser.add_option("-s", "--start")
 		.action("store")
 		.type("int")
