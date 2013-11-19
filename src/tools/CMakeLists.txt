@@ -6,6 +6,7 @@ set(apps
 	body
 	caser
 	sample
+	odd
 )
 
 foreach(app ${apps})
