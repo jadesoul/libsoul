@@ -45,7 +45,7 @@ public:
 		
 		
 		uint total=10000;
-		// log_warn("start "<<total<<" games ...")
+		log_warn("start "<<total<<" games ...")
 		uint win[3]={0, 0, 0};
 		int total_diff=0;
 		//比赛，多比几盘
