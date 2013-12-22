@@ -7,5 +7,3 @@ install:
 
 clean:
 	@rm -rf build lib bin
-	
-	
