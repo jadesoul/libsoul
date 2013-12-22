@@ -1,5 +1,5 @@
 all:
-	@git pull; git merge desktop
+	@git pull; git merge origin/desktop
 	@test -d build || ( mkdir build ; cd build ; cmake ../src ) && cd build
 	@make -sj install
 
