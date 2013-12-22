@@ -32,13 +32,13 @@ public:
 		// EasyAIPlayer white;
 		
 		// Look1AIPlayer black;
-		// Look1AIPlayer white;
+		Look1AIPlayer white;
 		
 		// Look2AIPlayer black;
 		// Look2AIPlayer white;
 		
 		RandomAIPlayer black;
-		RandomAIPlayer white;
+		// RandomAIPlayer white;
 		
 		// MonteCarloAIPlayer black;
 		// MonteCarloAIPlayer white;
