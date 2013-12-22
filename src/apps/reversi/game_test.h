@@ -44,7 +44,7 @@ public:
 		// MonteCarloAIPlayer white;
 		
 		
-		uint total=100;
+		uint total=10000;
 		log_warn("start "<<total<<" games ...")
 		uint win[3]={0, 0, 0};
 		int total_diff=0;
