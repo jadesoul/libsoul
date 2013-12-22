@@ -51,7 +51,7 @@ public:
 		//比赛，多比几盘
 		for_n(i, total) {
 			if (i%10==0)
-				log_status("progress: "<<i<<"/"<<total);
+				log_warn("progress: "<<i<<"/"<<total);
 			Game game(black, white);
 			Score score=game.start();
 			win[score.winner]+=1;
