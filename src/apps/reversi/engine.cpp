@@ -29,9 +29,9 @@ bool check(char* s) {
 }
 
 //以CGI的形式作为服务器端游戏引擎，供web界面以Ajax形式调用
-void main(int argc, char * argv[]) {
+int main(int argc, char * argv[]) {
 	cout<<"Content-Type: text/plain; charset=utf8\n\n";
-	if (argc!=2 || !check(argv[1])) return;
+	if (argc!=2 || !check(argv[1])) return -1;
 	
 	// EasyAIPlayer player;
 	// Look2AIPlayer player;
@@ -44,4 +44,5 @@ void main(int argc, char * argv[]) {
 	
 	string query=argv[1];
 	cout<<game.deal(query);
+	return 0;
 }

@@ -41,6 +41,7 @@ public:
 //也是很简单的AI，随机选择一个可下子的位置下子
 //棋力灰常弱，可以作为Baseline
 class RandomAIPlayer : public AIPlayer {
+	Random random;
 public:
 	uchar play(Board& b) {
 		uchar self=b.turn;

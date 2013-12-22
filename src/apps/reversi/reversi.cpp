@@ -20,5 +20,6 @@ int main () {
 	// delete new RandamTest;
 	
 	// system("pause");
+	return 0;
 }
 
