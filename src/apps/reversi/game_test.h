@@ -35,10 +35,10 @@ public:
 		// Look1AIPlayer white;
 		
 		// Look2AIPlayer black;
-		Look2AIPlayer white;
+		// Look2AIPlayer white;
 		
 		RandomAIPlayer black;
-		// RandomAIPlayer white;
+		RandomAIPlayer white;
 		
 		// MonteCarloAIPlayer black;
 		// MonteCarloAIPlayer white;
@@ -50,6 +50,8 @@ public:
 		int total_diff=0;
 		//比赛，多比几盘
 		for_n(i, total) {
+			if (i%10==0)
+				log_debug("progress: "<<i<<"/"<<total);
 			Game game(black, white);
 			Score score=game.start();
 			win[score.winner]+=1;
