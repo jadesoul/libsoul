@@ -31,7 +31,7 @@ if(UNIX)
 	target_link_libraries(libsoul_shared pthread)
 endif(UNIX)
 set_target_properties(libsoul_shared PROPERTIES OUTPUT_NAME "soul")
-set_target_properties(libsoul_shared PROPERTIES VERSION 1 SOVERSION 2)
+set_target_properties(libsoul_shared PROPERTIES VERSION 1 SOVERSION 1.2)
 install(TARGETS libsoul_shared DESTINATION ${LIB_INSTALL_DIR})
 
 # link_libraries(libsoul_static)#libsoul_shared
