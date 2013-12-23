@@ -1,7 +1,7 @@
 all: update prepare install
 
 update:
-	@git pull ;git merge origin/desktop
+	@git pull ; git merge origin/desktop
 	
 prepare:
 	@test -d build || ( mkdir build ; cd build ; cmake ../src )
