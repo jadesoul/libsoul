@@ -10,7 +10,7 @@
  * Written In: Peking University, beijing, China
  */
 
-#include <libjade>
+#include <libsoul>
 #include "word.h"
 #include "token.h"
 #include "pos.h"
