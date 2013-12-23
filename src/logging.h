@@ -21,7 +21,7 @@ extern uint verbose;
 	#define APP_NAME "Program"
 #endif
 
-#define LOG_SINATURE "" APP_NAME <<' '<<now<<' '
+#define LOG_SINATURE  APP_NAME <<" ["<<now<<"] "
 #define LOG_MODE_DEBUG "DEBUG"
 #define LOG_MODE_INFO "INFOR"
 #define LOG_MODE_STATUS "STATS"
