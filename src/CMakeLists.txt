@@ -36,14 +36,14 @@ install(TARGETS libsoul_static DESTINATION ${LIB_INSTALL_DIR})
 
 link_libraries(libsoul_static)#libsoul_shared
 
-set(subdirs
-	tests
-	apps
-	tools
-)
+# set(subdirs
+	# tests
+	# apps
+	# tools
+# )
 
-foreach(subdir ${subdirs})
-	if ( EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${subdir} )
-		add_subdirectory( ${subdir} )
-	endif ( EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${subdir} )
-endforeach(subdir)
+# foreach(subdir ${subdirs})
+	# if ( EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${subdir} )
+		# add_subdirectory( ${subdir} )
+	# endif ( EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${subdir} )
+# endforeach(subdir)
