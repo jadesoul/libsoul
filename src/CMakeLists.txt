@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 2.6)
 project(jadesoul)
 
+# set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Release)
+
 # set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/..) # or "/usr/local"
 set(CMAKE_INSTALL_PREFIX ~)
 
