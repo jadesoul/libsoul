@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 2.6)
 project(jadesoul)
 
-set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/..) # or "/usr/local"
+# set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/..) # or "/usr/local"
+set(CMAKE_INSTALL_PREFIX ${HOME})
 
 set(LIB_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/lib")
 set(INC_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/include")
