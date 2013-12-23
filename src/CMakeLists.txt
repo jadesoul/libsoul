@@ -34,4 +34,4 @@ set_target_properties(libsoul_shared PROPERTIES VERSION 1.2 SOVERSION 1)
 install(TARGETS libsoul_shared DESTINATION ${LIB_INSTALL_DIR})
 
 
-INSTALL (FILES *.h *.hpp DESTINATION ${INC_INSTALL_DIR}) 
+INSTALL (FILES algorithms.h bootstrap.h compiler.h corelib.h datetime.h debug.h dict.h dict_hash_map.hpp dict_new_impl.h dict_open_addr.hpp dict_rbtree_map.hpp dump.h dump_format.h encoding.h enumerator.h filesys.h json.h libsoul.h list.h list_old.h logging.h macros.h meminfo.h network.h optparse.h os.h random.h range.h regexp.h set.h str.h thread.h tuple.h types.h unicode.h utils.h wchar.hpp DESTINATION ${INC_INSTALL_DIR})
