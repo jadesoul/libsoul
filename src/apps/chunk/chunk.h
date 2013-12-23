@@ -10,7 +10,7 @@
  * Written In: Peking University, beijing, China
  */
 
-#include <libjade>
+#include <libsoul>
 #include "config.h"
 #include "segment.h"
 #include "probdict.h"

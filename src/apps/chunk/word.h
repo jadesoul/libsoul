@@ -10,7 +10,7 @@
  * Written In: Peking University, beijing, China
  */
 
-#include <bootstrap.h>
+#include <libsoul>
 #include "lexicon.h"
 #include "vocab.h"
 #include "token.h"

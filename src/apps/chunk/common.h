@@ -10,7 +10,7 @@
  * Written In: Peking University, beijing, China
  */
 
-#include <libjade>
+#include <libsoul>
 
 //matrix 2d, each cell is a value
 template<class T>

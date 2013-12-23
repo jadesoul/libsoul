@@ -10,7 +10,7 @@
  * Written In: Peking University, beijing, China
  */
 
-#include <corelib.h>
+#include <libsoul>
 #include "indexer.h"
 
 typedef uint PosTagID;

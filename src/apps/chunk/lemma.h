@@ -10,9 +10,7 @@
  * Written In: Peking University, beijing, China
  */
 
-#include <algorithms.h>
-#include <bootstrap.h>
-#include <corelib.h>
+#include <libsoul>
 #include "token.h"
 
 typedef str Lemma;

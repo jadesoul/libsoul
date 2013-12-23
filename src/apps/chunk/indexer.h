@@ -10,7 +10,7 @@
  * Written In: Peking University, beijing, China
  */
 
-#include <corelib.h>
+#include <libsoul>
 #include "common.h"
 
 //索引器，将一个值转成成编号索引，并可以在值和索引之间转换

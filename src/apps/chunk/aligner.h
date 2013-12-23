@@ -10,7 +10,7 @@
  * Written In: Peking University, beijing, China
  */
 
-#include <libjade>
+#include <libsoul>
 #include "config.h"
 #include "chunk.h"
 #include "alignment.h"

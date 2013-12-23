@@ -10,7 +10,7 @@
  * Written In: Peking University, beijing, China
  */
 
-#include <corelib.h>
+#include <libsoul>
 #include "indexer.h"
 
 //a token is the string expression a word

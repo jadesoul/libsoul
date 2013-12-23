@@ -10,7 +10,7 @@
  * Written In: Peking University, beijing, China
  */
 
-#include <corelib.h>
+#include <libsoul>
 #include "token.h"
 #include "pos.h"
 #include "lemma.h"
