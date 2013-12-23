@@ -18,7 +18,7 @@ include_directories(${INC_INSTALL_DIR})
 
 aux_source_directory(. sources)
 
-# message("Got Source Files: ${sources}")
+message("Got Source Files: ${sources}")
 add_library(libsoul_static STATIC ${sources})
 if(UNIX)
 	target_link_libraries(libsoul_static pthread)
@@ -26,15 +26,15 @@ endif(UNIX)
 set_target_properties(libsoul_static PROPERTIES OUTPUT_NAME "soul")
 install(TARGETS libsoul_static DESTINATION ${LIB_INSTALL_DIR})
 
-# add_library(libsoul_shared SHARED ${sources})
-# if(UNIX)
-	# target_link_libraries(libsoul_shared pthread)
-# endif(UNIX)
-# set_target_properties(libsoul_shared PROPERTIES OUTPUT_NAME "soul")
-# set_target_properties(libsoul_shared PROPERTIES VERSION 1)
-# install(TARGETS libsoul_shared DESTINATION ${LIB_INSTALL_DIR})
+add_library(libsoul_shared SHARED ${sources})
+if(UNIX)
+	target_link_libraries(libsoul_shared pthread)
+endif(UNIX)
+set_target_properties(libsoul_shared PROPERTIES OUTPUT_NAME "soul")
+set_target_properties(libsoul_shared PROPERTIES VERSION 1 SOVERSION 2)
+install(TARGETS libsoul_shared DESTINATION ${LIB_INSTALL_DIR})
 
-link_libraries(libsoul_static)#libsoul_shared
+# link_libraries(libsoul_static)#libsoul_shared
 
 # set(subdirs
 	# tests
