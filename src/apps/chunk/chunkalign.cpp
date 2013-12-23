@@ -8,7 +8,6 @@
  * Written In: Peking University, beijing, China
  */
 
-#include <stdafx.h>
 #define APP_NAME "Chunk"
 #include "chunkalign.h"
 

@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 2.6)
 project (jadesoul)
 
 set(apps
-	#txt2vcbsnt
-	#vcbsnt2txt
-	#vcbp2evcb
+	txt2vcbsnt
+	vcbsnt2txt
+	vcbp2evcb
 	chunkalign
 )
 
