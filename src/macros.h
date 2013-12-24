@@ -52,7 +52,7 @@
 	#define for_riter(it, type, con) for(type::reverse_iterator it=con.rbegin(), itend=con.rend(); it!=itend; ++it)
 	#define for_riterc(it, type, con) for(type::reverse_iterator it=con.rbegin(); it!=con.rend(); ++it)
 #elif __GNUC__<4 || (__GNUC__==4 && __GNUC_MINOR__<=3)
-	#define for_iter(it, type, con) for(type::iterator it=con.begin(), itend=con.end(); it!=itend; ++it)
+	#define for_iter(it, type, con) type::iterator it=con.begin(), itend=con.end(); for(; it!=itend; ++it)
 	#define for_iterc(it, type, con) for(type::iterator it=con.begin(); it!=con.end(); ++it)
 	#define for_riter(it, type, con) for(type::reverse_iterator it=con.rbegin(), itend=con.rend(); it!=itend; ++it)
 	#define for_riterc(it, type, con) for(type::reverse_iterator it=con.rbegin(); it!=con.rend(); ++it)
