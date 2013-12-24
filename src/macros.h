@@ -46,26 +46,49 @@
 #define for_tin(type, i, start, end, step) for (type i=start; i<end; i+=step)
 
 //for container iterations, in for_iterc, the 'c' means the container can be changes in the for loop
+
+//non-typename version
+#define for_iter1(it, type, con) for(type::iterator it=con.begin(), itend=con.end(); it!=itend; ++it)
+#define for_iterc1(it, type, con) for(type::iterator it=con.begin(); it!=con.end(); ++it)
+#define for_riter1(it, type, con) for(type::reverse_iterator it=con.rbegin(), itend=con.rend(); it!=itend; ++it)
+#define for_riterc1(it, type, con) for(type::reverse_iterator it=con.rbegin(); it!=con.rend(); ++it)
+
+//typename version
+#define for_iter2(it, type, con) for(typename type::iterator it=con.begin(), itend=con.end(); it!=itend; ++it)
+#define for_iterc2(it, type, con) for(typename type::iterator it=con.begin(); it!=con.end(); ++it)
+#define for_riter2(it, type, con) for(typename type::reverse_iterator it=con.rbegin(), itend=con.rend(); it!=itend; ++it)
+#define for_riterc2(it, type, con) for(typename type::reverse_iterator it=con.rbegin(); it!=con.rend(); ++it)
+
 #ifdef CPL_MSVC
-	#define for_iter(it, type, con) for(type::iterator it=con.begin(), itend=con.end(); it!=itend; ++it)
-	#define for_iterc(it, type, con) for(type::iterator it=con.begin(); it!=con.end(); ++it)
-	#define for_riter(it, type, con) for(type::reverse_iterator it=con.rbegin(), itend=con.rend(); it!=itend; ++it)
-	#define for_riterc(it, type, con) for(type::reverse_iterator it=con.rbegin(); it!=con.rend(); ++it)
-#elif __GNUC__<4 || (__GNUC__==4 && __GNUC_MINOR__<=3)
-	// #define for_iter(it, type, con) type::iterator it=con.begin(), itend=con.end(); for(; it!=itend; ++it)
-	// #define for_iterc(it, type, con) for(type::iterator it=con.begin(); it!=con.end(); ++it)
-	// #define for_riter(it, type, con) for(type::reverse_iterator it=con.rbegin(), itend=con.rend(); it!=itend; ++it)
-	// #define for_riterc(it, type, con) for(type::reverse_iterator it=con.rbegin(); it!=con.rend(); ++it)
+	#define for_iter(it, type, con) for_iter1(it, type, con)
+	#define for_iterc(it, type, con) for_iterc1(it, type, con)
+	#define for_riter(it, type, con) for_riter1(it, type, con)
+	#define for_riterc(it, type, con) for_riterc1(it, type, con)
 	
-	#define for_iter(it, type, con) for(typename type::iterator it=con.begin(), itend=con.end(); it!=itend; ++it)
-	#define for_iterc(it, type, con) for(typename type::iterator it=con.begin(); it!=con.end(); ++it)
-	#define for_riter(it, type, con) for(typename type::reverse_iterator it=con.rbegin(), itend=con.rend(); it!=itend; ++it)
-	#define for_riterc(it, type, con) for(typename type::reverse_iterator it=con.rbegin(); it!=con.rend(); ++it)
+	#define for_iter_tpl(it, type, con) for_iter1(it, type, con)
+	#define for_iterc_tpl(it, type, con) for_iterc1(it, type, con)
+	#define for_riter_tpl(it, type, con) for_riter1(it, type, con)
+	#define for_riterc_tpl(it, type, con) for_riterc1(it, type, con)
+#elif __GNUC__<4 || (__GNUC__==4 && __GNUC_MINOR__<=3)
+	#define for_iter(it, type, con) for_iter1(it, type, con)
+	#define for_iterc(it, type, con) for_iterc1(it, type, con)
+	#define for_riter(it, type, con) for_riter1(it, type, con)
+	#define for_riterc(it, type, con) for_riterc1(it, type, con)
+	
+	#define for_iter_tpl(it, type, con) for_iter2(it, type, con)
+	#define for_iterc_tpl(it, type, con) for_iterc2(it, type, con)
+	#define for_riter_tpl(it, type, con) for_riter2(it, type, con)
+	#define for_riterc_tpl(it, type, con) for_riterc2(it, type, con)
 #else
-	#define for_iter(it, type, con) for(typename type::iterator it=con.begin(), itend=con.end(); it!=itend; ++it)
-	#define for_iterc(it, type, con) for(typename type::iterator it=con.begin(); it!=con.end(); ++it)
-	#define for_riter(it, type, con) for(typename type::reverse_iterator it=con.rbegin(), itend=con.rend(); it!=itend; ++it)
-	#define for_riterc(it, type, con) for(typename type::reverse_iterator it=con.rbegin(); it!=con.rend(); ++it)
+	#define for_iter(it, type, con) for_iter2(it, type, con)
+	#define for_iterc(it, type, con) for_iterc2(it, type, con)
+	#define for_riter(it, type, con) for_riter2(it, type, con)
+	#define for_riterc(it, type, con) for_riterc2(it, type, con)
+	
+	#define for_iter_tpl(it, type, con) for_iter2(it, type, con)
+	#define for_iterc_tpl(it, type, con) for_iterc2(it, type, con)
+	#define for_riter_tpl(it, type, con) for_riter2(it, type, con)
+	#define for_riterc_tpl(it, type, con) for_riterc2(it, type, con)
 #endif
 
 
