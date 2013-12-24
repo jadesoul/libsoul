@@ -508,7 +508,7 @@ public:
 	void map(Function f) {//map a function to all elements
 		Selector selector;
 		list& me=*this;
-		for_iter(it, list, me) f(selector(*it));
+		for_iter_tpl(it, list, me) f(selector(*it));
 	}
 	
 	template<class Function>

@@ -124,7 +124,7 @@ public:
 	**************************************************/
 	inline dict& fromkeys(const kset& ks, const value& v=value()) {
 		clear();
-		for_iter(i, kset, ks) set(*i, v);
+		for_iter_tpl(i, kset, ks) set(*i, v);
 		return *this;
 	}
 	
@@ -134,7 +134,7 @@ public:
 	inline klist keys() {
 		klist ks;
 		dict& me=*this;
-		for_iter(i, dict, me) ks.append(i->first);
+		for_iter_tpl(i, dict, me) ks.append(i->first);
 		return ks;
 	}
 
@@ -144,7 +144,7 @@ public:
 	inline vlist values() {
 		vlist vs;
 		dict& me=*this;
-		for_iter(i, dict, me) vs.append(i->second);
+		for_iter_tpl(i, dict, me) vs.append(i->second);
 		return vs;
 	}
 	
@@ -154,7 +154,7 @@ public:
 	inline cpklist pkeys() {
 		cpklist ks;
 		dict& me=*this;
-		for_iter(i, dict, me) ks.append(&i->first);
+		for_iter_tpl(i, dict, me) ks.append(&i->first);
 		return ks;
 	}
 
@@ -164,7 +164,7 @@ public:
 	inline cpvlist pvalues() {
 		cpvlist vs;
 		dict& me=*this;
-		for_iter(i, dict, me) vs.append(&i->second);
+		for_iter_tpl(i, dict, me) vs.append(&i->second);
 		return vs;
 	}
 	
@@ -175,7 +175,7 @@ public:
 	inline cpelist pitems() {
 		cpelist es;
 		dict& me=*this;
-		for_iter(i, dict, me) es.append((element*)i);
+		for_iter_tpl(i, dict, me) es.append((element*)i);
 		return es;
 	}
 	
