@@ -15,7 +15,7 @@
 #include<stdlib.h>
 #include<time.h>
 
-class Random {//最好只有一个实例（用单例模式？太麻烦，算了）
+class Random {//最好只有一个实例（用单例模式 ? 太麻烦，算了）
 private:
 	static uint instance_cnt;
 public:
