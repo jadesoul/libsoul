@@ -1,4 +1,4 @@
-﻿#ifndef RANDOM_H_1356527036_22
+#ifndef RANDOM_H_1356527036_22
 #define RANDOM_H_1356527036_22
 /**
  * File: random.h
